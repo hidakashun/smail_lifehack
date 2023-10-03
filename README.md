@@ -1,24 +1,36 @@
-# README
+# smail lifehack
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+ 生活の中でちょっとしたライフハックを紹介共有し生活の質を高めるコミュニティサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+普段生活をする中で、ちょっとした工夫でうまくいったり、お手軽にできたりしたライフハックはあると思います。<br>
+例えば、掃除中、蛇口などについた頑固な水垢を落とすのにをみかんの皮をこすりつけてみる。<br>
+夏場のエアコンは、こまめに切るよりつけっぱなしにしていたほうが電気代がかからない。<br>
+ちょっとしたライフハックを投稿、共有することで、サイトの利用者の生活がより楽しくなったり節約につなげられればいいと思いこのテーマにしました。<br>
 
-* Ruby version
+### ターゲットユーザ
+- ためになるライクハックを知りたい人
+- よりよいライフハックを見つけ、共有したい人
 
-* System dependencies
+### 主な利用シーン
+- より効果的なライフハックを知りたい時
+- 何か生活の中でちょっとした困りごとがあった時
+- いいライフハックを見つけ、投稿、共有したい時
 
-* Configuration
+## 設計書
+​
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+折りたたむ
