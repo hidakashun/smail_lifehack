@@ -8,11 +8,24 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
+    resources :lifehacks, only: [:index,:show,:edit,:create,:destroy,:update] do
+      #コメント機能
+      resources :lifehack_comments, only: [:create, :destroy]
+      #いいね機能
+      resource :favorites, only: [:create, :destroy]
+    end
 
+    resource :users, only: [:show, :update] #:idを持たせないためresouce
+    get "/users/information/edit" => "users#edit"
+    get "/users/confirm" => "users#confirm"
+    patch "/users/withdraw" => "users#withdraw"
+    #キーワード検索機能
+    get '/search', to: 'searches#search'
   end
 
-  namespace :admin do#URLの最初に/admin/が追加されています。
+  namespace :admin do#URLの最初に/admin/が追加されます。
     root to: "homes#top"
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
   # ユーザー用
