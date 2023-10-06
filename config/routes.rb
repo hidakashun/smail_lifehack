@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+  scope module: :public do
+  end
+
+  namespace :admin do#URLの最初に/admin/が追加されています。
+  end
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
