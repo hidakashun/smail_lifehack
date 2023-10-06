@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :lifehacks,     dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :lifehack_comments,  dependent: :destroy
+
+  has_one_attached :profile_image
+
 end
