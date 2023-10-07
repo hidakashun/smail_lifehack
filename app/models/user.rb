@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :lifehacks, dependent: :destroy
+  #いいね機能
   has_many :favorites, dependent: :destroy
   has_many :lifehack_comments,  dependent: :destroy
 

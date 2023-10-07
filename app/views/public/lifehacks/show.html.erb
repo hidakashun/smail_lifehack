@@ -11,6 +11,10 @@
       <td>本文</td>
       <td><%= simple_format(@lifehack.body) %></td>
     </tr>
+    <tr>
+      <td>いいね数</td>
+      <td><%= render "public/favorites/btn", lifehack: @lifehack %></td><!--いいねボタン-->
+    </tr>
   </table>
   </div>
   <div class="row justify-content-center">
