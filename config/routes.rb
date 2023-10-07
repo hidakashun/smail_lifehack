@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
-    resources :lifehacks, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resources :lifehacks, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
       #コメント機能
       resources :lifehack_comments, only: [:create, :destroy]
       #いいね機能

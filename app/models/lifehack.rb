@@ -1,7 +1,15 @@
 class Lifehack < ApplicationRecord
+  has_one_attached :lifehack_image
   has_many :favorites,dependent: :destroy
   has_many :lifehack_comments, dependent: :destroy
   belongs_to :user
 
-  has_one_attached :lifehack_image
+  def get_lifehack_image
+    unless lifehack_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_lifehack_image.jpg')
+      lifehack_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    lifehack_image
+  end
+
 end
