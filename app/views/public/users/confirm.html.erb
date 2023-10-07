@@ -1,0 +1,16 @@
+<div class="container p-3">
+  <div class="row">
+
+    <div class="col-md-12 text-center mt-5">
+      <h4 class="mb-3">本当に退会しますか？</h4>
+      <p class="mb-3">
+        退会すると、会員登録情報や<br>
+        これまでの投稿履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+
+      <%= link_to "退会しない", users_path, :class => "btn btn-dark ms-3" %>
+      <%= link_to "退会する", users_withdraw_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+    </div>
+  </div>
+</div>
