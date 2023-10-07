@@ -2,7 +2,6 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>投稿ID</th>
       <th>タイトル</th>
       <th>評価</th>
       <th>いいね数</th>
@@ -13,13 +12,14 @@
   <tbody>
     <% @lifehacks.each do |lifehack| %>
     <tr>
-      <td><%= lifehack.id %></td>
       <td><%= link_to lifehack.title, lifehack_path(lifehack.id), class: "text-reset" %></td>
       <td></td>
       <td></td>
       <td></td>
       <td>
         <%= image_tag lifehack.user.get_profile_image(50, 50) %>
+        <%= lifehack.user.account_name %>
+        ユーザーのページに飛べるようにしたい
       </td>
     </tr>
     <% end %>

@@ -1,1 +1,22 @@
-詳細
+
+<div class="container py-5">
+  <h3>投稿詳細</h3>
+  <div class="row justify-content-center">
+    <!--%= image_tag @lifehack.get_item_image(300,250) %-->
+  <table class="table table-borderless text-center">
+    <tr>
+      <td>タイトル</td>
+      <td><%= @lifehack.title %></td>
+    <tr>
+      <td>本文</td>
+      <td><%= simple_format(@lifehack.body) %></td>
+    </tr>
+  </table>
+  </div>
+  <div class="row justify-content-center">
+    <% if @lifehack.user == current_user %>
+      <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4" %>
+      <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn  btn-danger destroy_book_#{@lifehack.id}" %>
+    <% end %>
+  </div>
+</div>

@@ -8,9 +8,11 @@ class Public::LifehacksController < ApplicationController
   end
 
   def show
+    @lifehack = Lifehack.find(params[:id])
   end
 
   def edit
+    @lifehack = Lifehack.find(params[:id])
   end
 
   def create
@@ -24,9 +26,18 @@ class Public::LifehacksController < ApplicationController
   end
 
   def destroy
+    @lifehack = Lifehack.find(params[:id])
+    @lifehack.destroy
+    redirect_to lifehacks_path
   end
 
   def update
+    @lifehack = Lifehack.find(params[:id])
+    if @lifehack.update(lifehack_params)
+      redirect_to lifehack_path(@lifehack), notice: "変更しました。"
+    else
+      render :edit
+    end
   end
 private
 

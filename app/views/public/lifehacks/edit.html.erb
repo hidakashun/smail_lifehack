@@ -1,4 +1,4 @@
-新規投稿
+投稿編集
 
 <h1>投稿内容入力</h1>
 <%= form_with model: @lifehack do |f| %>
@@ -8,5 +8,7 @@
   <%= f.text_area :body %>
   <h4>画像</h4>
   <%= f.file_field :lifehack_image, accept: "image/*" %>
-  <%= f.submit '新規投稿', class: "btn btn-dark px-4" %>
+  <%= f.submit '変更を保存', class: "btn btn-dark px-4" %>
 <% end %>
+<%= link_to '詳細ページ', @lifehack %> |
+<%= link_to '投稿一覧', lifehacks_path, class: "back" %>
