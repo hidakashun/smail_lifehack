@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="my-5">マイページ</h3>
+        <div class="d-flex align-items-center">
+          <h4><b>登録情報</b></h4>
+          <%= link_to "編集する", users_information_edit_path, class:"btn btn-dark ml-3" %>
+        </div>
+        <br>
+          <table class="table table-bordered">
+            <tr><%= image_tag @user.get_profile_image(200,200) %>できれば大きくしたい</tr>
+            <tr>
+              <td>アカウント名</td>
+              <td><%= @user.account_name %></td>
+            </tr>
+            <tr>
+              <td>紹介文</td>
+              <td><%= @user.introduction %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @user.email %></td>
+            </tr>
+          </table>
+          <div class="d-flex align-center">
+            <h4><b>投稿履歴</b></h4>
+            <%= link_to "一覧を見る", lifehacks_path, class: "btn btn-dark ml-3" %>
+            <h4><b>いいね一覧</b></h4>
+            <%= link_to "一覧を見る(リンク未実装)", lifehacks_path, class: "btn btn-dark ml-3" %>
+          </div>
+    </div>
+  </div>
+</div>
