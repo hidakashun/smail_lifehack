@@ -15,7 +15,14 @@
       <td>いいね数</td>
       <td><%= render "public/favorites/btn", lifehack: @lifehack %></td><!--いいねボタン-->
     </tr>
+    <tr>
+      <td>コメント数</td>
+      <td><%= @lifehack.lifehack_comments.count %></td>
+    </tr>
   </table>
+    <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
+    <br>
+    <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
   </div>
   <div class="row justify-content-center">
     <% if @lifehack.user == current_user %>

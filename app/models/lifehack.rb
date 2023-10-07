@@ -5,6 +5,7 @@ class Lifehack < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+  #コメント機能
   has_many :lifehack_comments, dependent: :destroy
   belongs_to :user
 

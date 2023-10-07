@@ -15,7 +15,7 @@
       <td><%= link_to lifehack.title, lifehack_path(lifehack.id), class: "text-reset" %></td>
       <td></td>
       <td><%= render "public/favorites/btn", lifehack: lifehack %></td><!--いいね機能-->
-      <td></td>
+      <td>コメント数: <%= lifehack.lifehack_comments.count %></td><!--コメント機能-->
       <td>
         <%= image_tag lifehack.user.get_profile_image(50, 50) %>
         <%= lifehack.user.account_name %>

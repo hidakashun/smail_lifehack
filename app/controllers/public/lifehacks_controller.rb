@@ -9,6 +9,7 @@ class Public::LifehacksController < ApplicationController
 
   def show
     @lifehack = Lifehack.find(params[:id])
+    @lifehack_comment = LifehackComment.new
   end
 
   def edit

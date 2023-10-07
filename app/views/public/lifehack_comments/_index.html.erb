@@ -1,0 +1,21 @@
+<table>
+  <tbody>
+      <% lifehack.lifehack_comments.each do |lifehack_comment| %>
+      <tr>
+
+        <td>
+          <%= link_to users_path(lifehack_comment.user) do %>
+            <%= image_tag lifehack_comment.user.get_profile_image(100, 100) %><br>
+            <%= lifehack_comment.user.account_name %>
+          <% end %>
+        </td>
+        <td><%= lifehack_comment.comment %></td>
+        <td>
+          <% if lifehack_comment.user == current_user %>
+            <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, class: "btn btn-danger pull-right" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
