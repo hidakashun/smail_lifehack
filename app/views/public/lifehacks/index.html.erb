@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>タイトル</th>
-      <th>評価</th>
+      <th>おすすめ度</th>
       <th>いいね数</th>
       <th>コメント数</th>
       <th>投稿ユーザー</th>
@@ -13,7 +13,7 @@
     <% @lifehacks.each do |lifehack| %>
     <tr>
       <td><%= link_to lifehack.title,lifehack, class: "lifehack_#{lifehack.id} text-reset" %></td>
-      <td></td>
+      <td><%= render "static.rate", lifehack: lifehack %></td>
       <td class=<%= "favorite-" + lifehack.id.to_s %> ><!--いいね機能-->
           <%= render "public/favorites/btn", lifehack: lifehack %>
       </td>
@@ -27,3 +27,4 @@
     <% end %>
   </tbody>
 </table>
+

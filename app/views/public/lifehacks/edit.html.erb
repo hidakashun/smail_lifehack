@@ -8,6 +8,11 @@
   <%= f.text_area :body %>
   <h4>画像</h4>
   <%= f.file_field :lifehack_image, accept: "image/*" %>
+  <h4>おすすめ度</h4>
+  <div class="form-group">
+      <%= render "static.rate", lifehack: @lifehack %>
+  </div>
+
   <%= f.submit '変更を保存', class: "btn btn-dark px-4" %>
 <% end %>
 <%= link_to '詳細ページ', @lifehack %> |

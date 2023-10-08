@@ -8,5 +8,26 @@
   <%= f.text_area :body %>
   <h4>画像</h4>
   <%= f.file_field :lifehack_image, accept: "image/*" %>
+
+ <!-- starについての記述-->
+  <div class="form-group" id="star">
+  <h4>おすすめ度</h4>
+    <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+    <div id="post_raty"></div>
+  </div>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#post_raty');
+      if (elem == null) return;
+
+      elem.innerHTML = ""
+      let opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'lifehack[star]',
+      };
+      raty(elem, opt);
+    });
+  </script>
   <%= f.submit '新規投稿', class: "btn btn-dark px-4" %>
 <% end %>

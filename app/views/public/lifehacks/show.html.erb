@@ -12,6 +12,10 @@
       <td><%= simple_format(@lifehack.body) %></td>
     </tr>
     <tr>
+      <td>おすすめ度</td>
+      <td><%= render "static.rate", lifehack: @lifehack %></td>
+    </tr>
+    <tr>
       <td>いいね数</td>
       <td class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
           <%= render "public/favorites/btn", lifehack: @lifehack %>
