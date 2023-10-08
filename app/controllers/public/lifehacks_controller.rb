@@ -43,6 +43,6 @@ class Public::LifehacksController < ApplicationController
 private
 
   def lifehack_params
-    params.require(:lifehack).permit(:title, :body, :lifehack_image, :star)
+    params.require(:lifehack).permit(:title, :body, :star, :lifehack_image)
   end
 end
