@@ -16,7 +16,15 @@
     </tr>
     <tr>
       <td>画像解説</td>
-      <td><%= image_tag @lifehack.get_lifehack_image(300,250) %></td>
+      <td>
+        <% if @lifehack.lifehack_images.attached? %>
+          <% @lifehack.lifehack_images.each do |image| %>
+            <%= image_tag image.variant(resize: "300x300") %>
+          <% end %>
+        <% else %>
+            <%= image_tag 'no_lifehack_image.jpg' %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <td>投稿日</td>
