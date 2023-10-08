@@ -12,10 +12,12 @@
   <tbody>
     <% @lifehacks.each do |lifehack| %>
     <tr>
-      <td><%= link_to lifehack.title, lifehack_path(lifehack.id), class: "text-reset" %></td>
+      <td><%= link_to lifehack.title,lifehack, class: "lifehack_#{lifehack.id} text-reset" %></td>
       <td></td>
-      <td><%= render "public/favorites/btn", lifehack: lifehack %></td><!--いいね機能-->
-      <td>コメント数: <%= lifehack.lifehack_comments.count %></td><!--コメント機能-->
+      <td class=<%= "favorite-" + lifehack.id.to_s %> ><!--いいね機能-->
+          <%= render "public/favorites/btn", lifehack: lifehack %>
+      </td>
+      <td><%= render "public/lifehack_comments/counter", lifehack: lifehack %></td><!--コメント機能-->
       <td>
         <%= image_tag lifehack.user.get_profile_image(50, 50) %>
         <%= lifehack.user.account_name %>

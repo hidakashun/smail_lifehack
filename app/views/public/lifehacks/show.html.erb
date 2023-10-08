@@ -13,21 +13,27 @@
     </tr>
     <tr>
       <td>いいね数</td>
-      <td><%= render "public/favorites/btn", lifehack: @lifehack %></td><!--いいねボタン-->
+      <td class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
+          <%= render "public/favorites/btn", lifehack: @lifehack %>
+      </td>
     </tr>
     <tr>
       <td>コメント数</td>
-      <td><%= @lifehack.lifehack_comments.count %></td>
+      <td class="lifehack-comments-counter"><!--コメント非同期通信-->
+        <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
+      </td>
     </tr>
   </table>
+  <div class="lifehack-comments-index">
     <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
+  </div>
     <br>
     <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
   </div>
   <div class="row justify-content-center">
     <% if @lifehack.user == current_user %>
-      <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4" %>
-      <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn  btn-danger destroy_book_#{@lifehack.id}" %>
+      <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4 edit_lifehack_#{@lifehack.id}" %>
+      <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn  btn-danger  destroy_lifehack_#{@lifehack.id}"  %>
     <% end %>
   </div>
 </div>
