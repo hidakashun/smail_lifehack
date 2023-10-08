@@ -2,6 +2,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th>投稿日</th>
       <th>タイトル</th>
       <th>おすすめ度</th>
       <th>いいね数</th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @lifehacks.each do |lifehack| %>
     <tr>
+      <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= link_to lifehack.title,lifehack, class: "lifehack_#{lifehack.id} text-reset" %></td>
       <td><%= render "static.rate", lifehack: lifehack %></td>
       <td class=<%= "favorite-" + lifehack.id.to_s %> ><!--いいね機能-->
@@ -19,9 +21,10 @@
       </td>
       <td><%= render "public/lifehack_comments/counter", lifehack: lifehack %></td><!--コメント機能-->
       <td>
+        <%= link_to users_path(lifehack.user) do %>
         <%= image_tag lifehack.user.get_profile_image(50, 50) %>
         <%= lifehack.user.account_name %>
-        ユーザーのページに飛べるようにしたい
+        <% end %>
       </td>
     </tr>
     <% end %>
