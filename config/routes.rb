@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-
+  # ユーザー用
+  # URL /users/sign_in ...
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
@@ -15,10 +20,8 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
-    resource :users, only: [:show, :update] #:idを持たせないためresouce
-    get "/users/information/edit" => "users#edit"
+    resources :users, only: [:show, :update, :edit, :index]
     get "/users/confirm" => "users#confirm"
-    get "/users/index" => "users#index"
     patch "/users/withdraw" => "users#withdraw"
     #キーワード検索機能
     get '/search', to: 'searches#search'
@@ -30,11 +33,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
   end
 
-  # ユーザー用
-  # URL /users/sign_in ...
-  devise_for :users,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

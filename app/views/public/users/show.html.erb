@@ -4,7 +4,7 @@
       <h3 class="my-5">マイページ</h3>
         <div class="d-flex align-items-center">
           <h4><b>登録情報</b></h4>
-          <%= link_to "編集する", users_information_edit_path, class:"btn btn-dark ml-3" %>
+          <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-dark ml-3" %>
         </div>
         <br>
           <table class="table table-bordered">
