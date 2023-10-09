@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3 class="my-5">マイページ</h3>
+      <% if @user == current_user %>
+        <h3 class="my-5">マイページ</h3>
+      <% else %>
+        <h3 class="my-5">ユーザーページ</h3>
+      <% end %>
         <div class="d-flex align-items-center">
           <h4><b>登録情報</b></h4>
           <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-dark ml-3" %>
