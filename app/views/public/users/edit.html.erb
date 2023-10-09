@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col">
       <h3 class="my-5">ユーザー情報編集</h3>
-
       <%= form_with model: @user, url: users_path, method: :patch do |f| %>
       <!--%= render 'layouts/error', obj: @user %-->
           <table class="table table-borderless">
@@ -10,23 +9,19 @@
               <td>アカウント名</td>
               <td><%= f.text_field :account_name, autofocus: true, class: "form-control name" %></td>
             </tr>
-
             <tr>
               <td>プロフィール画像</td>
               <td><%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %></td>
             </tr>
-
             <tr>
               <td>紹介文</td>
               <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
             </tr>
-
             <tr>
               <td>メールアドレス</td>
               <td><%= f.text_field :email, class: "form-control email" %></td>
               <td></td>
             </tr>
-
             <tr>
               <td></td>
               <td><%= f.submit "編集内容を保存", class:"btn btn-dark" %>&ensp;<%= link_to "退会する", confirm_users_path, class:"btn btn-danger" %></td>

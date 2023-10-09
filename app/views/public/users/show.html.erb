@@ -8,7 +8,9 @@
       <% end %>
         <div class="d-flex align-items-center">
           <h4><b>登録情報</b></h4>
+          <% if @user == current_user %>
           <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-dark ml-3" %>
+          <% end %>
         </div>
         <br>
           <table class="table table-bordered">
