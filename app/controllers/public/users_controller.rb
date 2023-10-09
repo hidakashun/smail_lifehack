@@ -3,6 +3,10 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
+  def index
+    @users = User.all
+  end
+
   def edit
     @user = current_user
   end

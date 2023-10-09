@@ -1,7 +1,7 @@
 <!--検索機能-->
 <% if @model == 'user' %>
-	<h3>Users search for "<%= @content %>"</h3>
-  <!--%= render 'users/index', users: @records %-->
+	<h3>ユーザー キーワード検索"<%= @content %>"</h3>
+  <%= render 'public/users/index', users: @records %>
 <% elsif @model == 'lifehack' %>
 	<h3>ライフハック キーワード検索 "<%= @content %>"</h3>
   <%= render 'public/lifehacks/index', lifehacks: @records %>

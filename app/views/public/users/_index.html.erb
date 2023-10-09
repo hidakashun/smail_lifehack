@@ -1,0 +1,29 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>アカウント名</th>
+      <th>会員ステータス</th>
+      <th>ユーザーページ</th>
+    </tr>
+  </thead>
+  <h1>検索機能で検索するとeach文でエラーになる</h1>
+  <tbody>
+    <% users.each do |user| %>
+    <tr>
+      <td><%= image_tag user.get_profile_image(100, 100) %></td>
+      <td><%= user.account_name %></td>
+      <td>
+        <% if user.is_active == true %>
+          <p class="text-secondary">退会</p>
+        <% else %>
+          <p class="text-success">有効</p>
+        <% end %></td>
+      <td>
+        遷移先がどれもログインユーザーのマイページ
+        <%= link_to "Show", users_path(params[:id]) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

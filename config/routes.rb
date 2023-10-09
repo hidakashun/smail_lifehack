@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resource :users, only: [:show, :update] #:idを持たせないためresouce
     get "/users/information/edit" => "users#edit"
     get "/users/confirm" => "users#confirm"
+    get "/users/index" => "users#index"
     patch "/users/withdraw" => "users#withdraw"
     #キーワード検索機能
     get '/search', to: 'searches#search'
