@@ -20,9 +20,13 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
-    resources :users, only: [:show, :update, :edit, :index]
-    get "/users/confirm" => "users#confirm"
-    patch "/users/withdraw" => "users#withdraw"
+    resources :users, only: [:show, :update, :edit, :index] do
+      collection do
+        get 'confirm'
+        patch 'withdraw'
+      end
+    end
+
     #キーワード検索機能
     get '/search', to: 'searches#search'
 
