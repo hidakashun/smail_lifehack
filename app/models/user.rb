@@ -10,6 +10,19 @@ class User < ApplicationRecord
   #コメント機能
   has_many :lifehack_comments,  dependent: :destroy
 
+    #検索機能、条件分岐
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
   has_one_attached :profile_image
 
   def get_profile_image(width, height)

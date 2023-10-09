@@ -9,4 +9,17 @@ class Lifehack < ApplicationRecord
   has_many :lifehack_comments, dependent: :destroy
   belongs_to :user
 
+    #検索機能、条件分岐
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Lifehack.where(title: content)
+    elsif method == 'forward'
+      Lifehack.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Lifehack.where('title LIKE ?', '%'+content)
+    else
+      Lifehack.where('title LIKE ?', '%'+content+'%')
+    end
+  end
+
 end

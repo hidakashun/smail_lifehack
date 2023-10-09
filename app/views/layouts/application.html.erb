@@ -29,6 +29,11 @@
           <%= link_to "ログイン", new_user_session_path %>
       <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <div class="d-flex justify-content-center mb-2"><!--検索機能-->
+        <%= render 'public/searches/form' %><!--検索機能-->
+      </div><!--検索機能-->
+      <%= yield %>
+    </main>
   </body>
 </html>

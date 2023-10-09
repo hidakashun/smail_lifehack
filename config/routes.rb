@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch "/users/withdraw" => "users#withdraw"
     #キーワード検索機能
     get '/search', to: 'searches#search'
+
   end
 
   namespace :admin do#URLの最初に/admin/が追加されます。
