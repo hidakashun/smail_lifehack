@@ -20,7 +20,7 @@ User.create!(
       password: '222222'
     },
     {
-      account_name: "テスト２",
+      account_name: "テスト３",
       is_active: "true",
       email: 'test3@test3.com',
       password: '333333'
