@@ -15,9 +15,8 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報を更新しました。"
-      redirect_to users_path
+      redirect_to user_path
     else
-      @user = current_user
       render :edit
     end
   end
