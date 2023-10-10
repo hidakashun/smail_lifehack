@@ -8,6 +8,8 @@ class Lifehack < ApplicationRecord
   #コメント機能
   has_many :lifehack_comments, dependent: :destroy
   belongs_to :user
+  #タグ検索機能
+  validates :tag, presence: true
 
     #検索機能、条件分岐
   def self.search_for(content, method)

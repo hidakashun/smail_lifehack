@@ -19,17 +19,16 @@ Rails.application.routes.draw do
       #いいね機能
       resource :favorites, only: [:create, :destroy]
     end
-
     resources :users, only: [:show, :update, :edit, :index] do
       collection do
         get 'confirm'
         patch 'withdraw'
       end
     end
-
     #キーワード検索機能
     get '/search', to: 'searches#search'
-
+    #タグ検索機能
+    get 'tagsearches/search', to: 'tagsearches#search'
   end
 
   namespace :admin do#URLの最初に/admin/が追加されます。

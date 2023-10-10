@@ -15,6 +15,10 @@
       <td><%= render "static.rate", lifehack: @lifehack %></td>
     </tr>
     <tr>
+      <td>タグ</td>
+      <td><%=link_to @lifehack.tag,tagsearches_search_path(content: @lifehack.tag)%></td>
+    </tr>
+    <tr>
       <td>画像解説</td>
       <td>
         <% if @lifehack.lifehack_images.attached? %>

@@ -1,8 +1,8 @@
-<!--検索機能-->
+<!--キーワード検索機能-->
 <% if @model == 'user' %>
-	<h3>ユーザー キーワード検索"<%= @content %>"</h3>
+	<h3>ユーザー キーワード検索一覧"<%= @content %>"</h3>
   <%= render 'public/users/index', users: @records %>
 <% elsif @model == 'lifehack' %>
-	<h3>ライフハック キーワード検索 "<%= @content %>"</h3>
+	<h3>ライフハック キーワード検索一覧 "<%= @content %>"</h3>
   <%= render 'public/lifehacks/index', lifehacks: @records %>
 <% end %>

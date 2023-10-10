@@ -13,7 +13,6 @@
 
   <body>
     <header>
-      <div>　</div>
       <%= link_to "topページ", root_path %>
         <% if user_signed_in? %>
           <%= link_to "新規投稿", new_lifehack_path %>
@@ -32,9 +31,10 @@
       <% end %>
     </header>
     <main>
-      <div class="d-flex justify-content-center mb-2"><!--検索機能-->
-        <%= render 'public/searches/form' %><!--検索機能-->
-      </div><!--検索機能-->
+      <div class="d-flex justify-content-center mb-2"><!--キーワード、タグ検索機能-->
+        <%= render 'public/searches/form' %><!--キーワード検索機能-->
+        <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
+      </div>
       <%= yield %>
     </main>
   </body>
