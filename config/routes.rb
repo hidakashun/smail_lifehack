@@ -20,9 +20,13 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :users, only: [:show, :update, :edit, :index] do
-      collection do
+      collection do #id が付与されない
         get 'confirm'
         patch 'withdraw'
+        get :likes
+      end
+      member do
+        get :favorites
       end
     end
     #キーワード検索機能
