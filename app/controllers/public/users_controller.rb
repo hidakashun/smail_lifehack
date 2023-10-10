@@ -39,6 +39,11 @@ class Public::UsersController < ApplicationController
     @favorite_lifehacks = Lifehack.find(favorites)
   end
 
+  def index_user
+    @user = User.find(params[:id])
+    @lifehacks = Lifehack.where(user_id:params[:id])
+  end
+
   private
 
   def user_params

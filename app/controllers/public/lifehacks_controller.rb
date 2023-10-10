@@ -40,6 +40,7 @@ class Public::LifehacksController < ApplicationController
       render :edit
     end
   end
+  
 private
 
   def lifehack_params

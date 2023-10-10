@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
       member do
         get :favorites
+        get :index_user
       end
     end
     #キーワード検索機能
