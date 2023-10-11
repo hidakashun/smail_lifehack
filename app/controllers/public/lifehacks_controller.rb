@@ -20,7 +20,7 @@ class Public::LifehacksController < ApplicationController
     @lifehack = Lifehack.new(lifehack_params)
     @lifehack.user_id = current_user.id
     if @lifehack.save
-      redirect_to lifehack_path(@lifehack), notice: "投稿しました。"
+      redirect_to lifehack_path(@lifehack), notice: "ライフハックを投稿しました。"
     else
       render :new
     end
@@ -35,12 +35,12 @@ class Public::LifehacksController < ApplicationController
   def update
     @lifehack = Lifehack.find(params[:id])
     if @lifehack.update(lifehack_params)
-      redirect_to lifehack_path(@lifehack), notice: "変更しました。"
+      redirect_to lifehack_path(@lifehack), notice: "投稿内容を更新しました。"
     else
       render :edit
     end
   end
-  
+
 private
 
   def lifehack_params
