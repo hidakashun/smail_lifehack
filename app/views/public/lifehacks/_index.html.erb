@@ -5,7 +5,9 @@
       <th>タイトル</th>
       <th>おすすめ度</th>
       <th>タグ</th>
-      <th>いいね数</th>
+      <% if user_signed_in? %>
+      <th>いいね</th>
+      <% end %>
       <th>コメント数</th>
       <th>投稿ユーザー</th>
     </tr>
@@ -17,9 +19,11 @@
       <td><%= link_to lifehack.title,lifehack, class: "lifehack_#{lifehack.id} text-reset" %></td>
       <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
       <td><%=link_to lifehack.tag,tagsearches_search_path(content: lifehack.tag)%></td><!--タグ機能-->
+      <% if user_signed_in? %>
       <td class=<%= "favorite-" + lifehack.id.to_s %> ><!--いいね機能-->
         <%= render "public/favorites/btn", lifehack: lifehack %>
       </td>
+      <% end %>
       <td><%= render "public/lifehack_comments/counter", lifehack: lifehack %></td><!--コメント機能-->
       <td>
         <%= link_to user_path(lifehack.user) do %>

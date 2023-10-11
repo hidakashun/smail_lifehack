@@ -36,9 +36,13 @@
     </tr>
     <tr>
       <td>いいね数</td>
+      <% if user_signed_in? %>
       <td class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
           <%= render "public/favorites/btn", lifehack: @lifehack %>
       </td>
+      <% else %>
+      <td>いいねを確認するにはログインが必要です。</td>
+      <% end %>
     </tr>
     <tr>
       <td>コメント数</td>
