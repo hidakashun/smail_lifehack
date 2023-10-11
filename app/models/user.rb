@@ -10,6 +10,13 @@ class User < ApplicationRecord
   #コメント機能
   has_many :lifehack_comments,  dependent: :destroy
 
+  #バリデーション
+  validates :account_name, presence: true, length: { minimum: 2, maximum: 20 }#アカウント名最小2文字、最大20文字
+
+  validates :introduction, length: {maximum: 50}#紹介文最大20文字
+
+
+
     #検索機能、条件分岐
   def self.search_for(content, method)
     if method == 'perfect'

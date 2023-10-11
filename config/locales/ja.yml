@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        account_name: アカウント名
+        introduction: 紹介文
+      lifehack:
+        title: タイトル
+        body: 本文
+        tag: タグ
+  activemodel:   # Formオブジェクトを用いた場合

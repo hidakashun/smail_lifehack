@@ -5,6 +5,7 @@
   <h4>本文</h4>
   <%= f.text_area :body, class: 'form-control' %>
   <h4>画像解説</h4>
+  <P>最大3枚まで投稿可能</P>
   <%= f.file_field :lifehack_images, multiple: true, accept: "image/*" %>
    <!--おすすめ度(star)についての記述-->
   <% if lifehack.id.nil? %>

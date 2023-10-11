@@ -1,5 +1,4 @@
 class Lifehack < ApplicationRecord
-  has_many_attached :lifehack_images
   #いいね機能
   has_many :favorites,dependent: :destroy
   def favorited_by?(user)
@@ -8,10 +7,15 @@ class Lifehack < ApplicationRecord
   #コメント機能
   has_many :lifehack_comments, dependent: :destroy
   belongs_to :user
-  #タグ検索機能
-  validates :tag, presence: true
 
-    #検索機能、条件分岐
+  #バリデーション
+  validates :title, presence: true, length: { minimum: 2, maximum: 20 }#タイトル最小2文字、最大20文字
+  validates :body,presence:true,length:{ minimum: 10,maximum:200}#本文最小10文字、最大200文字
+
+  validates :tag, presence: true#タグを設定させる
+  validates :tag, length: {maximum: 10}#タグ設定最大10文字
+
+  #検索機能、条件分岐
   def self.search_for(content, method)
     if method == 'perfect'
       Lifehack.where(title: content)
@@ -22,6 +26,17 @@ class Lifehack < ApplicationRecord
     else
       Lifehack.where('title LIKE ?', '%'+content+'%')
     end
+  end
+
+  has_many_attached :lifehack_images#画像投稿関連
+
+  FILE_NUMBER_LIMIT = 3
+
+  validate :validate_number_of_files
+
+  def validate_number_of_files
+    return if lifehack_images.length <= FILE_NUMBER_LIMIT
+    errors.add(:画像解説, "に添付できる画像は#{FILE_NUMBER_LIMIT}枚までです。")
   end
 
 end
