@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="my-5">ユーザー情報編集</h3>
+      <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+        <%= render 'layouts/error', obj: @user %>
+          <table class="table table-borderless ">
+            <tr>
+              <td>アカウント名</td>
+              <td><%= @user.account_name %></td>
+            </tr>
+            <tr>
+              <td>プロフィール画像</td>
+              <td><%= image_tag @user.get_profile_image(200, 200) %></td>
+            </tr>
+            <tr>
+              <td>紹介文</td>
+              <td><%= @user.introduction %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <%= f.radio_button :is_active, true %>
+                <%= f.label :is_active_true, "退会" %>
+                <%= f.radio_button :is_active, false %>
+                <%= f.label :is_active_false, "有効" %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "変更内容を保存",class: "btn btn-dark" %>
+            </tr>
+          </table>
+      <% end %>
+    </div>
+  </div>
+</div>

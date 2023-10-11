@@ -1,1 +1,41 @@
-ユーザー詳細
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h3 class="my-5">ユーザーページ</h3>
+        <div class="d-flex">
+          <h4><b>登録情報</b></h4>
+          <% if admin_signed_in? %>
+          <%= link_to "編集する", edit_admin_user_path(@user.id), class:"btn btn-dark ml-3" %>
+          <% end %>
+        </div>
+        <br>
+          <table class="table table-bordered">
+            <tr><%= image_tag @user.get_profile_image(300, 300), class:"mb-3"%></tr>
+            <tr>
+              <td>アカウント名</td>
+              <td><%= @user.account_name %></td>
+            </tr>
+            <tr>
+              <td>紹介文</td>
+              <td><%= @user.introduction %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <% if @user.is_active == true %>
+                  <p class="text-secondary">退会</p>
+                <% else %>
+                  <p class="text-success">有効</p>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+          <div class="d-flex align-center">
+            <h4><b>投稿履歴</b></h4>
+            <%= link_to "一覧を見る(リンク未実装)", index_user_user_path(@user), class: "btn btn-dark ml-3" %>
+            <h4><b>いいね一覧</b></h4>
+            <%= link_to "一覧を見る(リンク未実装)", favorites_user_path(@user), class: "btn btn-dark ml-3" %>
+          </div>
+    </div>
+  </div>
+</div>
