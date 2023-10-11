@@ -5,9 +5,7 @@
       <th>タイトル</th>
       <th>おすすめ度</th>
       <th>タグ</th>
-      <% if user_signed_in? %>
       <th>いいね</th>
-      <% end %>
       <th>コメント数</th>
       <th>投稿ユーザー</th>
     </tr>
@@ -22,6 +20,12 @@
       <% if user_signed_in? %>
       <td class=<%= "favorite-" + lifehack.id.to_s %> ><!--いいね機能-->
         <%= render "public/favorites/btn", lifehack: lifehack %>
+      </td>
+      <% else %>
+      <td>
+        <%= link_to new_user_session_path do %>
+          <i class="fas fa-heart" aria-hidden="true"></i>
+        <% end %>
       </td>
       <% end %>
       <td><%= render "public/lifehack_comments/counter", lifehack: lifehack %></td><!--コメント機能-->
