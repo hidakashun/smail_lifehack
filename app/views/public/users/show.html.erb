@@ -6,7 +6,7 @@
       <% else %>
         <h3 class="my-5">ユーザーページ</h3>
       <% end %>
-        <div class="d-flex align-items-center">
+        <div class="d-flex">
           <h4><b>登録情報</b></h4>
           <% if @user == current_user %>
           <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-dark ml-3" %>
@@ -23,10 +23,12 @@
               <td>紹介文</td>
               <td><%= @user.introduction %></td>
             </tr>
+            <% if @user == current_user %>
             <tr>
               <td>メールアドレス</td>
               <td><%= @user.email %></td>
             </tr>
+            <% end %>
             <tr>
               <td>会員ステータス</td>
               <td>
