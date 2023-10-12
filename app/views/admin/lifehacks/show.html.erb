@@ -50,11 +50,15 @@
       </td>
     </tr>
     <tr>
-      <td>コメント一覧</td>
+      <td>コメント一覧(削除ボタン未実装)</td>
       <td class="lifehack-comments-index">
         <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能一覧-->
       </td>
     </tr>
   </table>
+  <div class="row justify-content-center">
+
+      <%= link_to '管理者権限により投稿を削除する', admin_lifehack_path(@lifehack), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn  btn-danger  destroy_lifehack_#{@lifehack.id}"  %>
+  </div>
   </div>
 </div>

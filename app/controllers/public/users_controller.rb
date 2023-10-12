@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
     # is_activeカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_active: true)
     reset_session
-    redirect_to root_path, notice: "ライフハックを投稿しました。"
+    redirect_to root_path, notice: "退会処理を実行いたしました"
   end
 
   def favorites

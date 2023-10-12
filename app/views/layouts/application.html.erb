@@ -13,10 +13,12 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <main class="container flex-shrink-0">
+    <main>
+      <div class="container flex-shrink-0">
         <%= flash[:notice] %>
         <%= flash[:alert] %>
       <%= yield %>
+      </div>
     </main>
     <%= render 'layouts/footer' %>
   </body>

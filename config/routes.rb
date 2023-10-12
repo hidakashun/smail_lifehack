@@ -23,7 +23,6 @@ Rails.application.routes.draw do
       collection do #id が付与されない
         get 'confirm'
         patch 'withdraw'
-        get :likes
       end
       member do
         get :favorites
@@ -39,9 +38,7 @@ Rails.application.routes.draw do
   namespace :admin do#URLの最初に/admin/が追加されます。
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
-    resources :lifehacks, only: [:index,:show]
+    resources :lifehacks, only: [:index,:show, :destroy]
   end
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
