@@ -4,7 +4,7 @@ class Public::LifehacksController < ApplicationController
   end
 
   def index
-    @lifehacks = Lifehack.all
+    @lifehacks = Lifehack.page(params[:page]).per(10)
   end
 
   def show

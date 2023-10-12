@@ -1,8 +1,8 @@
 @use '~bootstrap/scss/bootstrap';
 
 body {
-  // urlでうまくいくとおもわれるが、もしダメだった場合再度質問。(他の質問と一緒にする。)
-  background-image: url("../../assets/images/background_image.jpg");
-  width: 100%;
-  height: 100%;
+// urlでうまくいくとおもわれるが、もしダメだった場合再度質問。(他の質問と一緒にする。)
+//url("../images/background_image.jpg")；の「../」は階層のこと
+  background-image: url("../images/background_image.jpg");
+  background-size: cover;
 }

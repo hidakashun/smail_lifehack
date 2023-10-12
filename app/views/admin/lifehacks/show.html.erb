@@ -36,12 +36,9 @@
     </tr>
     <tr>
       <td>いいね数</td>
-      <% if user_signed_in? %>
-
-
-      <% else %>
-      <td>いいねを確認するにはログインが必要です。</td>
-      <% end %>
+      <td><i class="fas fa-heart" aria-hidden="true"></i>
+       <%= @lifehack.favorites.count %>
+      </td>
     </tr>
     <tr>
       <td>コメント数</td>
