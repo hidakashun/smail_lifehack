@@ -14,7 +14,7 @@
     <% lifehacks.each do |lifehack| %>
     <tr>
       <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= link_to lifehack.title,lifehack, class: "lifehack_#{lifehack.id} text-reset" %></td>
+      <td><%= link_to lifehack.title,lifehack, class: "text-reset" %></td>
       <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
       <td><%=link_to lifehack.tag,tagsearches_search_path(content: lifehack.tag)%></td><!--タグ機能-->
       <% if user_signed_in? %>

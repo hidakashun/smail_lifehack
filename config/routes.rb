@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   namespace :admin do#URLの最初に/admin/が追加されます。
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
+    resources :lifehacks, only: [:index,:show]
   end
 
 

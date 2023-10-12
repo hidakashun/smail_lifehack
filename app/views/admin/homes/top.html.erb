@@ -15,7 +15,7 @@
     <% @lifehacks.each do |lifehack| %>
     <tr>
       <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
-      <td>未定タイトル</td>
+      <td><%= link_to lifehack.title, admin_lifehack_path(lifehack), class: " text-reset" %></td>
       <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
       <td>未定タグ</td>
       <td>
