@@ -19,9 +19,8 @@
       <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
       <td>未定タグ</td>
       <td>
-        <%= link_to new_user_session_path do %>
           <i class="fas fa-heart" aria-hidden="true"></i>
-        <% end %>
+          <%= lifehack.favorites.count %> いいね
       </td>
       <td>未定コメント数</td>
       <td>
