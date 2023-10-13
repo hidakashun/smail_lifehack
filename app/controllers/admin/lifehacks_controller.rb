@@ -1,5 +1,6 @@
 class Admin::LifehacksController < ApplicationController
   def index
+    @lifehacks = Lifehack.where(user_id:params[:id]).page(params[:page]).per(10)
   end
 
   def show
