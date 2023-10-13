@@ -18,19 +18,17 @@
             <td><%= f.text_field :email, placeholder: "sample@example.com", class: "w-100 form-control" %></td>
           </tr>
           <tr>
-            <td class="text-right">パスワード<% if @minimum_password_length %></td>
+            <td class="text-right">パスワード<% if @minimum_password_length %><span class="small">(<%= @minimum_password_length %> 文字以上)</span></td>
             <td><span class="text-muted necessary-field p-1 px-2 ml-2 small rounded">必須</span>
-              <br><span class="small">(<%= @minimum_password_length %> 文字以上)</span>
             </td>
             <% end %>
-            <td><%= f.password_field :password, class: "form-control" %></td>
+            <td><%= f.password_field :password, placeholder: "パスワード(6 文字以上)", class: "form-control" %></td>
           </tr>
           <tr>
-            <td class="text-right">パスワード</td>
+            <td class="text-right">パスワード<span class="small">(確認用)</span></td>
             <td><span class="text-muted necessary-field p-1 px-2 ml-2 small rounded">必須</span>
-              <br><span class="small">(確認用)</span>
             </td>
-            <td><%= f.password_field :password_confirmation, class: "form-control" %></td>
+            <td><%= f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: "form-control" %></td>
           </tr>
         </table>
       </div>

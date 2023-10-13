@@ -1,2 +1,5 @@
 ユーザー一覧
 <%= render 'index', users: @users %>
+<div class="row justify-content-center">
+  <%= paginate @users %>
+</div>

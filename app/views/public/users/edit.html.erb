@@ -7,7 +7,7 @@
           <table class="table table-borderless ">
             <tr>
               <td>アカウント名</td>
-              <td><%= f.text_field :account_name, autofocus: true, class: "form-control name" %></td>
+              <td><%= f.text_field :account_name, autofocus: true, placeholder: "アカウント名を入力してください。", class: "form-control name" %></td>
             </tr>
             <tr>
               <td>プロフィール画像</td>
@@ -18,7 +18,7 @@
             </tr>
             <tr>
               <td>紹介文</td>
-              <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
+              <td><%= f.text_area :introduction, placeholder: "紹介文を書きましょう！", class: "form-control introduction" %></td>
             </tr>
             <tr>
               <td></td>

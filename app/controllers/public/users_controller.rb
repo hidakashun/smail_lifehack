@@ -36,11 +36,12 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:lifehack_id)
     @favorite_lifehacks = Lifehack.find(favorites)
+    @lifehacks = Lifehack.page(params[:page]).per(10)
   end
 
   def index_user
     @user = User.find(params[:id])
-    @lifehacks = Lifehack.where(user_id:params[:id])
+    @lifehacks = Lifehack.where(user_id:params[:id]).page(params[:page]).per(10)
   end
 
   private

@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-    @lifehacks = Lifehack.all
+    @lifehacks = Lifehack.page(params[:page]).per(10)
   end
 end
