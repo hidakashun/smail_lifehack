@@ -13,9 +13,7 @@ class Lifehack < ApplicationRecord
   #バリデーション
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }#タイトル最小2文字、最大20文字
   validates :body,presence:true,length:{ minimum: 10,maximum:200}#本文最小10文字、最大200文字
-
-  validates :tag, presence: true#タグを設定させる
-  validates :tag, length: {maximum: 10}#タグ設定最大10文字
+  validates :tag, length: { minimum: 2, maximum: 20 }#タグ設定最小2文字、最大20文字
 
   #検索機能、条件分岐
   def self.search_for(content, method)
