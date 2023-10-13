@@ -6,6 +6,4 @@
 	<h3>ライフハック キーワード検索一覧 "<%= @content %>"</h3>
   <%= render 'public/lifehacks/index', lifehacks: @records %>
 <% end %>
-<div class="row justify-content-center">
-  <%= paginate @lifehacks %>
-</div>
+<%= render "layouts/page", obj: @lifehacks %>

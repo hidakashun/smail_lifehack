@@ -1,7 +1,3 @@
 <h3>ライフハック タグ検索一覧 "<%= @word %>"</h3>
-
 <%= render 'public/lifehacks/index', lifehacks: @lifehacks %>
-
-<div class="row justify-content-center">
-  <%= paginate @lifehacks %>
-</div>
+<%= render "layouts/page", obj: @lifehacks %>
