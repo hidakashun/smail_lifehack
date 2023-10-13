@@ -41,7 +41,10 @@
           <%= render "public/favorites/btn", lifehack: @lifehack %>
       </td>
       <% else %>
-      <td>いいねを確認するにはログインが必要です。</td>
+      <td>
+        <i class="fas fa-heart" aria-hidden="true"></i>
+          <%= @lifehack.favorites.count %>
+      </td>
       <% end %>
     </tr>
     <tr>
@@ -55,7 +58,9 @@
     <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
   </div>
     <br>
-    <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
+    <% if user_signed_in? %>
+      <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
+    <% end %>
   </div>
   <div class="row justify-content-center">
     <% if @lifehack.user == current_user %>
