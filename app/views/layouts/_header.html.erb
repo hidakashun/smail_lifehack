@@ -1,24 +1,76 @@
-<header>
-  <%= link_to "topページ", root_path %>
-    <% if user_signed_in? %>
-      <%= link_to "新規投稿", new_lifehack_path %>
-      <%= link_to "マイページ", user_path(current_user) %>
-      <%= link_to "投稿一覧", lifehacks_path %>
-      <%= link_to "ユーザー一覧",users_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% elsif admin_signed_in? %>
-      <%= link_to "投稿一覧", admin_root_path %>
-      <%= link_to "ユーザー一覧",admin_users_path %>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "About", about_path %>
-      <%= link_to "投稿一覧", lifehacks_path %>
-      <%= link_to "ユーザー一覧",users_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-  <% end %>
-  <div class="d-flex justify-content-center mb-2"><!--キーワード、タグ検索機能-->
-    <%= render 'public/searches/form' %><!--キーワード検索機能-->
-    <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
+<header style="background-color: ;"><!--#F5A9A9-->
+  <div class="container-fluid">
+    <div class="row mx-auto">
+      <div class="col-3">
+        <%= link_to root_path do %>
+          アイコン
+        <% end %>
+      </div>
+      <div class="col-3 mt-3 text-right">
+        <% if user_signed_in? %>
+          <p><%= "ようこそ、#{current_user.account_name}さん！" %></p>
+        <% end %>
+      </div>
+      <div class="col-6">
+        <ul class="row justify-content-end my-2 list-unstyled">
+          <% if user_signed_in? %>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-regular fa-user"></i>
+              <%= link_to "マイページ", user_path(current_user), class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-cake-candles"></i>
+              <%= link_to "投稿一覧", lifehacks_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <%= link_to "ユーザー一覧",users_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-cake-candles"></i>
+              <%= link_to "投稿一覧", admin_root_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-users"></i>
+              <%= link_to "ユーザー一覧",admin_users_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+          <% else %>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-store"></i>
+              <%= link_to "About", about_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-cake-candles"></i>
+              <%= link_to "投稿一覧", lifehacks_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-cake-candles"></i>
+              <%= link_to "ユーザー一覧",users_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-regular fa-handshake"></i>
+              <%= link_to "新規登録", new_user_registration_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <%= link_to "ログイン", new_user_session_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+            </li>
+          <% end %>
+        </ul>
+          <div class="d-flex justify-content-center mb-2"><!--キーワード、タグ検索機能-->
+            <%= render 'public/searches/form' %><!--キーワード検索機能-->
+            <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
+          </div>
+      </div>
+    </div>
   </div>
 </header>

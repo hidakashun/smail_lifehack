@@ -1,4 +1,4 @@
 <%= form_with(model:[lifehack, lifehack_comment], local: false) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントでリアクションしてみましょう。", class:"form-control w-100" %>
+  <%= f.text_area :comment, size: "100x20", rows:'5',placeholder: "コメントでリアクションしてみましょう。", class:"form-control" %>
   <%= f.submit "送信" %>
 <% end %>

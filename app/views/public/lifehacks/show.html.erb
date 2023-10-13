@@ -53,18 +53,24 @@
         <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
       </td>
     </tr>
+    <tr>
+      <td>コメント一覧</td>
+      <td>
+        <div class="lifehack-comments-index">
+          <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
+        </div>
+      </td>
+    </tr>
   </table>
-  <div class="lifehack-comments-index">
-    <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
-  </div>
-    <br>
     <% if user_signed_in? %>
       <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
     <% end %>
   </div>
+  &emsp;&emsp;
   <div class="row justify-content-center">
     <% if @lifehack.user == current_user %>
       <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4 edit_lifehack_#{@lifehack.id}" %>
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn  btn-danger  destroy_lifehack_#{@lifehack.id}"  %>
     <% end %>
   </div>
