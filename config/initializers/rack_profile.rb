@@ -1,1 +1,3 @@
-Rack::MiniProfiler.config.position = 'bottom-left'
+unless Rails.env.prodution?
+  Rack::MiniProfiler.config.position = 'bottom-left'
+end
