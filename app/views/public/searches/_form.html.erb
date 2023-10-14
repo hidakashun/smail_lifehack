@@ -1,7 +1,7 @@
-<div>
+<div class="tagserch_form mr-5" >
   <table align="center">
     <tr>
-      <div>
+      <div class="tagserch_form" >
       <%= form_with url: search_path, method: :get, local: true do |f| %>
       <td><%= f.text_field :content, :size=>"30", placeholder: "キーワードを入力してください。", class: "form-control" %></td>
       <td><%= f.select :model, options_for_select({ "ユーザー" => "user", "ライフハック" => "lifehack" }) %></td>

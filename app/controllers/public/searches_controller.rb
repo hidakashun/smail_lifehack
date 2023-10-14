@@ -5,7 +5,7 @@ class Public::SearchesController < ApplicationController
     @model = params[:model]#検索モデル→params[:model]
     @content = params[:content]#検索ワード→params[:content]
     @method = params[:method]#検索方法→params[:method]
-    @lifehacks = Lifehack.page(params[:page]).per(10)
+    @lifehacks = Lifehack.page(params[:page]).per(10).order(created_at: :desc)
 
     if @model == 'user'
       @records = User.search_for(@content, @method)

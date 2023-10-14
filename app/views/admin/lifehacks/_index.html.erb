@@ -4,7 +4,7 @@
       <th>投稿日</th>
       <th>タイトル</th>
       <th>おすすめ度</th>
-      <th>タグ</th>
+      <th>タグ(リンク先未作成)</th>
       <th>いいね</th>
       <th>コメント数</th>
       <th>投稿ユーザー</th>
@@ -16,7 +16,7 @@
       <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= link_to lifehack.title, admin_lifehack_path(lifehack), class: " text-reset" %></td>
       <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
-      <td>未定タグ</td>
+      <td><%= lifehack.tag %></td>
       <td>
           <i class="fas fa-heart" aria-hidden="true"></i>
           <%= lifehack.favorites.count %>
