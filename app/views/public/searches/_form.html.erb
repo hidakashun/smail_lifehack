@@ -1,9 +1,14 @@
-<%= form_with url: search_path, method: :get, local: true do |f| %>
-  <%= f.text_field :content, placeholder: "キーワードを入力してください。", class: "form-control" %>
-  <%= f.select :model, options_for_select({ "ユーザー" => "user", "ライフハック" => "lifehack" }) %>
-  <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
-  <%= f.submit '検索' %>
-<% end %>
-
-
-
+<div>
+  <table align="center">
+    <tr>
+      <div>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <td><%= f.text_field :content, :size=>"30", placeholder: "キーワードを入力してください。", class: "form-control" %></td>
+      <td><%= f.select :model, options_for_select({ "ユーザー" => "user", "ライフハック" => "lifehack" }) %></td>
+      <td><%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %></td>
+      <td><%= f.submit 'キーワード検索' %></td>
+      <% end %>
+      </div>
+    </tr>
+  </table>
+</div>
