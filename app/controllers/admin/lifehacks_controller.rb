@@ -1,6 +1,9 @@
 class Admin::LifehacksController < ApplicationController
   def index
-    @lifehacks = Lifehack.where(user_id:params[:id]).page(params[:page]).per(10).order(created_at: :desc)
+    @lifehacks = Lifehack.where(user_id:params[:id])
+                         .page(params[:page]).per(10)
+                         .order(created_at: :desc)
+                         .where(is_draft: false)
   end
 
   def show

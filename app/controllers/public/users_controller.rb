@@ -4,7 +4,8 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(10).order(created_at: :desc)
+    @users = User.page(params[:page]).per(10)
+                 .order(created_at: :desc)
   end
 
   def edit
@@ -41,7 +42,10 @@ class Public::UsersController < ApplicationController
 
   def index_user
     @user = User.find(params[:id])
-    @lifehacks = Lifehack.where(user_id:params[:id]).page(params[:page]).per(10)
+    @lifehacks = Lifehack.where(user_id:params[:id])
+                         .page(params[:page]).per(10)
+                         .order(created_at: :desc)
+                         .where(is_draft: false)
   end
 
   private

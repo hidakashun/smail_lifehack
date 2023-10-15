@@ -4,7 +4,9 @@ class Public::LifehacksController < ApplicationController
   end
 
   def index
-    @lifehacks = Lifehack.page(params[:page]).per(10).order(created_at: :desc)
+    @lifehacks = Lifehack.page(params[:page]).per(10)
+                         .order(created_at: :desc)
+                         .where(is_draft: false)
   end
 
   def show
@@ -75,7 +77,9 @@ class Public::LifehacksController < ApplicationController
   end
 
   def index_draft
-    @lifehacks = Lifehack.where(is_draft: true).page(params[:page]).per(10).order(created_at: :desc)
+    @lifehacks = Lifehack.where(is_draft: true)
+                         .page(params[:page])
+                         .per(10).order(created_at: :desc)
     @user = current_user
   end
 
