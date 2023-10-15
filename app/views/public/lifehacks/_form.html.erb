@@ -3,11 +3,26 @@
   <h4>タイトル</h4>
   <%= f.text_field :title, autofocus: true, placeholder: "タイトル（2文字以上、20文字以内）を入力してください。", class: 'form-control' %>
   <h4>本文</h4>
-  <%= f.text_area :body, placeholder: "本文（10文字以上、200文字以内）を入力してください。", class: 'form-control' %>
+  <%= f.text_area :body, placeholder: "本文（10文字以上、200文字以内）を入力してください.", class: 'form-control' %>
   <h4>画像解説</h4>
-  <P>最大3枚まで投稿可能</P>
-  <%= f.file_field :lifehack_images, multiple: true, accept: "image/*" %>
-   <!--おすすめ度(star)についての記述-->
+  <p>最大3枚まで投稿可能</p>
+  <p id="error-message" style="color: red; display: none;">画像は最大3枚まで投稿できます。</p>
+  <%= f.file_field :lifehack_images, multiple: true, accept: "image/*", id: "image-upload" %>
+
+  <!-- 画像枚数制限をかけるJavaScriptコード-->
+  <script>
+    document.getElementById('image-upload').addEventListener('change', function(e) {
+      const files = e.target.files;
+      if (files.length > 3) {
+        document.getElementById('error-message').style.display = 'block';
+        e.preventDefault(); // 画像の選択をキャンセル
+      } else {
+        document.getElementById('error-message').style.display = 'none';
+      }
+    });
+  </script>
+
+  <!--おすすめ度(star)についての記述-->
   <% if lifehack.id.nil? %>
     <div class="form-group" id="star">
       <h4>おすすめ度</h4>
@@ -15,42 +30,43 @@
       <div id="post_raty"></div>
     </div>
     <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#post_raty');
-      if (elem == null) return;
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
 
-      elem.innerHTML = ""
-      let opt = {
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        scoreName: 'lifehack[star]',
-      };
-      raty(elem, opt);
-    });
-  </script>
+        elem.innerHTML = "";
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'lifehack[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
   <% else %>
     <div class="form-group">
       <h4>おすすめ度</h4>
-      <P style="color :#FF0000;"><strong>変更不可</strong></P>
+      <p style="color :#FF0000;"><strong>変更不可</strong></p>
       <%= render "static.rate", lifehack: lifehack %>
     </div>
   <% end %>
+
   <!-- tagについての記述-->
   <div class="form-group">
     <h4>タグ設定</h4>
-      <%= f.text_field :tag, placeholder: "タグ検索で入力するタグ（2文字以上、20文字以内）を設定してください。", class: 'form-control' %>
+    <%= f.text_field :tag, placeholder: "タグ検索で入力するタグ（2文字以上、20文字以内）を設定してください.", class: 'form-control' %>
   </div>
   <div class="row">
     <% if lifehack.id.nil? %>
-    <div class="col-2">
-      <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4" %>
-    </div>
-    <div class="col-4">
-      <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4" %>
-    </div>
-    <div class="col-6">
-      <%= link_to "下書き一覧", index_draft_lifehacks_path, class: "btn btn-dark px-4" %>
-    </div>
+      <div class="col-2">
+        <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4" %>
+      </div>
+      <div class="col-4">
+        <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4" %>
+      </div>
+      <div class="col-6">
+        <%= link_to "下書き一覧", index_draft_lifehacks_path, class: "btn btn-dark px-4" %>
+      </div>
     <% else %>
       <% if lifehack.is_draft == true %>
         <div class="col-2 pb-5">
