@@ -30,7 +30,8 @@
   </script>
   <% else %>
     <div class="form-group">
-      <h4>おすすめ度（変更不可）</h4>
+      <h4>おすすめ度</h4>
+      <P style="color :#FF0000;"><strong>変更不可</strong></P>
       <%= render "static.rate", lifehack: lifehack %>
     </div>
   <% end %>
@@ -39,16 +40,28 @@
     <h4>タグ設定</h4>
       <%= f.text_field :tag, placeholder: "タグ検索で入力するタグ（2文字以上、20文字以内）を設定してください。", class: 'form-control' %>
   </div>
-  <% if lifehack.id.nil? %>
-    <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4" %>
-    <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4" %>
-    <%= link_to "下書き一覧", index_draft_lifehacks_path, class: "btn btn-dark ml-3" %>
-  <% else %>
-    <% if lifehack.is_draft == true %>
-      <%= f.submit "ライフハックを公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
-      <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+  <div class="row">
+    <% if lifehack.id.nil? %>
+    <div class="col-2">
+      <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4" %>
+    </div>
+    <div class="col-4">
+      <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4" %>
+    </div>
+    <div class="col-6">
+      <%= link_to "下書き一覧", index_draft_lifehacks_path, class: "btn btn-dark px-4" %>
+    </div>
     <% else %>
-      <%= f.submit '変更を保存', :name => 'update_post', class: "btn btn-dark px-4" %>
+      <% if lifehack.is_draft == true %>
+        <div class="col-2 pb-5">
+          <%= f.submit "ライフハックを公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
+        </div>
+        <div class="col-10 pb-5">
+          <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+        </div>
+      <% else %>
+        <%= f.submit '変更を保存', :name => 'update_post', class: "btn btn-dark px-4" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 <% end %>
