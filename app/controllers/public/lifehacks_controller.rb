@@ -77,10 +77,10 @@ class Public::LifehacksController < ApplicationController
   end
 
   def index_draft
-    @lifehacks = Lifehack.where(is_draft: true)
+    @user = current_user
+    @lifehacks = @user.lifehacks.where(is_draft: true)
                          .page(params[:page])
                          .per(10).order(created_at: :desc)
-    @user = current_user
   end
 
 private

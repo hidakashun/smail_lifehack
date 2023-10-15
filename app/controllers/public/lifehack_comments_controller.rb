@@ -4,6 +4,7 @@ class Public::LifehackCommentsController < ApplicationController
     @comment = current_user.lifehack_comments.new(lifehack_comment_params)
     @comment.lifehack_id = lifehack.id
     @comment.save
+    redirect_to request.referer
   end
 
   def destroy

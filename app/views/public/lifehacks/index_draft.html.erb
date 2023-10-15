@@ -1,5 +1,3 @@
 下書き一覧
-<% if @user == current_user %>
   <%= render 'index', lifehacks: @lifehacks %>
   <%= render "layouts/page", obj: @lifehacks %>
-<% end %>
