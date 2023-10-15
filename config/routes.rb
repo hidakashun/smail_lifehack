@@ -20,10 +20,15 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
     resources :lifehacks, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
+      #下書き一覧
+      collection do
+        get :index_draft
+      end
       #コメント機能
       resources :lifehack_comments, only: [:create, :destroy]
       #いいね機能
       resource :favorites, only: [:create, :destroy]
+
     end
     resources :users, only: [:show, :update, :edit, :index] do
       collection do #id が付与されない
@@ -31,7 +36,9 @@ Rails.application.routes.draw do
         patch 'withdraw'
       end
       member do
+        #ユーザーごとのいいね履歴一覧
         get :favorites
+        #ユーザーごとの投稿履歴一覧
         get :index_user
       end
     end

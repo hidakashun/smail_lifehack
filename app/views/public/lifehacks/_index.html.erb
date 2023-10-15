@@ -12,6 +12,7 @@
   </thead>
   <tbody>
     <% lifehacks.each do |lifehack| %>
+
     <tr>
       <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= link_to lifehack.title,lifehack, class: "text-reset" %></td>

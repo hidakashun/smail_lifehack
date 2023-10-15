@@ -11,6 +11,14 @@ class Lifehack < ApplicationRecord
   belongs_to :user
 
   #バリデーション
+
+  #下書き関連
+  with_options presence: true, on: :publicize do
+    validates :title
+    validates :body
+    validates :tag
+  end
+
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }#タイトル最小2文字、最大20文字
   validates :body,presence:true,length:{ minimum: 10,maximum:200}#本文最小10文字、最大200文字
   validates :tag, length: { minimum: 2, maximum: 20 }#タグ設定最小2文字、最大20文字
