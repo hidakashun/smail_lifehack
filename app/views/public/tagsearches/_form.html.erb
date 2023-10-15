@@ -3,7 +3,7 @@
     <tr>
       <div class="serch_form">
       <%= form_with url: tagsearches_search_path,method: :get, local: true do |f| %>
-      <td><%= f.text_field :content, placeholder: "タグを入力してください。", class: "form-control" %></td>
+      <td><%= f.text_field :content2, id: "field2", placeholder: "タグを入力してください。", class: "form-control" %></td>
       <td><%= f.submit'タグ検索' %></td>
       <% end %>
       </div>

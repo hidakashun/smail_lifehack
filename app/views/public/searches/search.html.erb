@@ -1,9 +1,17 @@
 <!--キーワード検索機能-->
 <% if @model == 'user' %>
 	<h3>ユーザー キーワード検索一覧"<%= @content %>"</h3>
-  <%= render 'public/users/index', users: @records %>
+	<% if admin_signed_in? %>
+    <%= render 'admin/users/index', users: @records %>
+  <% else %>
+    <%= render 'public/users/index', users: @records %>
+  <% end %>
 <% else @model == 'lifehack' %>
 	<h3>ライフハック キーワード検索一覧 "<%= @content %>"</h3>
-  <%= render 'public/lifehacks/index', lifehacks: @records %>
+	<% if admin_signed_in? %>
+    <%= render 'admin/lifehacks/index', lifehacks: @records %>
+  <% else %>
+    <%= render 'public/lifehacks/index', lifehacks: @records %>
+  <% end %>
 <% end %>
 <%= render "layouts/page", obj: @lifehacks %>
