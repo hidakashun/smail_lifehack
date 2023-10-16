@@ -19,15 +19,15 @@
               <%= link_to "マイページ", user_path(current_user), class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-regular fa-user"></i>
+              <i class="fa-regular fa-pen-to-square"></i>
               <%= link_to "新規投稿", new_lifehack_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-cake-candles"></i>
+              <i class="fa-solid fa-list"></i>
               <%= link_to "投稿一覧", lifehacks_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i class="fa-solid fa-users"></i>
               <%= link_to "ユーザー一覧",users_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
@@ -36,7 +36,7 @@
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-cake-candles"></i>
+              <i class="fa-solid fa-list"></i>
               <%= link_to "投稿一覧", admin_root_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
@@ -49,15 +49,15 @@
             </li>
           <% else %>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-store"></i>
+              <i class="fa-solid fa-hands-holding"></i>
               <%= link_to "About", about_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-cake-candles"></i>
+              <i class="fa-solid fa-list"></i>
               <%= link_to "投稿一覧", lifehacks_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-cake-candles"></i>
+              <i class="fa-solid fa-users"></i>
               <%= link_to "ユーザー一覧",users_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
