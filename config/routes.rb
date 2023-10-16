@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update] do
       member do
+        #ユーザーごとのいいね履歴一覧
+        get :favorites
         #ユーザーごとの投稿履歴一覧
         get :index_user
       end

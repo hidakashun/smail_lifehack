@@ -4,7 +4,8 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(10).order(created_at: :desc)
+    @users = User.page(params[:page]).per(10)
+                 .order(created_at: :desc)
   end
 
   def edit
@@ -41,6 +42,8 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:lifehack_id)
     @favorite_lifehacks = Lifehack.find(favorites)
     @lifehacks = Lifehack.page(params[:page]).per(10)
+                         .order(created_at: :desc)
+                         .where(is_draft: false)
   end
 
   def index_user

@@ -21,7 +21,16 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
+  def favorites
+    @user = User.find(params[:id])
+    favorite_ids = Favorite.where(user_id: @user.id).pluck(:lifehack_id)
+    @favorite_lifehacks = Lifehack.where(id: favorite_ids)
+                                  .page(params[:page]).per(10)
+                                  .order(created_at: :desc)
+                                  .where(is_draft: false)
+  end
+
   def index_user
     @user = User.find(params[:id])
     @lifehacks = Lifehack.where(user_id: params[:id])
