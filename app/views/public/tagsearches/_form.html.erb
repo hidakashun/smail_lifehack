@@ -4,10 +4,13 @@
       <div class="search-form">
         <%= form_with(url: tagsearches_search_path, method: :get, local: true) do |f| %>
           <td>
+            <i class="fa-solid fa-magnifying-glass fa-beat"></i>
+          </td>
+          <td>
             <%= f.text_field :content2, id: "field2", placeholder: "タグを入力してください。", class: "form-control" %>
           </td>
           <td>
-            <%= f.submit 'タグ検索' %>
+            <%= f.submit 'タグ検索'.html_safe, class: "btn btn-primary" %>
           </td>
         <% end %>
       </div>
