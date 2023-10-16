@@ -31,7 +31,7 @@ class Public::LifehacksController < ApplicationController
     # 下書きボタンを押下した場合
     else
       if @lifehack.update(is_draft: true)
-        redirect_to user_path(current_user), notice: "ライフハックを下書き保存しました！"
+        redirect_to lifehack_path(@lifehack), notice: "ライフハックを下書き保存しました！"
       else
         render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
@@ -79,8 +79,8 @@ class Public::LifehacksController < ApplicationController
   def index_draft
     @user = current_user
     @lifehacks = @user.lifehacks.where(is_draft: true)
-                         .page(params[:page])
-                         .per(10).order(created_at: :desc)
+                                .page(params[:page]).per(10)
+                                .order(created_at: :desc)
   end
 
 private

@@ -4,8 +4,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(10)
-                 .order(created_at: :desc)
+    @users = User.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
@@ -26,11 +25,15 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    @user = current_user
-    # is_activeカラムをtrueに変更することにより削除フラグを立てる
-    @user.update(is_active: true)
-    reset_session
-    redirect_to root_path, notice: "退会処理を実行いたしました"
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, notice: "ゲストユーザーは退会できません。"
+    else
+      @user = current_user
+      # is_activeカラムをtrueに変更することにより削除フラグを立てる
+      @user.update(is_active: true)
+      reset_session
+      redirect_to root_path, notice: "退会処理を実行いたしました"
+    end
   end
 
   def favorites
@@ -42,7 +45,7 @@ class Public::UsersController < ApplicationController
 
   def index_user
     @user = User.find(params[:id])
-    @lifehacks = Lifehack.where(user_id:params[:id])
+    @lifehacks = Lifehack.where(user_id: params[:id])
                          .page(params[:page]).per(10)
                          .order(created_at: :desc)
                          .where(is_draft: false)
@@ -51,7 +54,6 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:account_name,:profile_image,:introduction,:email,)
+    params.require(:user).permit(:account_name, :profile_image, :introduction, :email)
   end
-
 end

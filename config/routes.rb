@@ -51,8 +51,13 @@ Rails.application.routes.draw do
 
   namespace :admin do#URLの最初に/admin/が追加されます。
     root to: "homes#top"
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :lifehacks, only: [:index,:show, :destroy]
+    resources :users, only: [:index, :show, :edit, :update] do
+      member do
+        #ユーザーごとの投稿履歴一覧
+        get :index_user
+      end
+    end
+    resources :lifehacks, only: [:show, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

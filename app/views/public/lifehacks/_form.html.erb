@@ -1,4 +1,9 @@
-<h1>投稿内容入力</h1>
+<h1>投稿内容入力
+  <% if lifehack.id.nil? %>
+    <%= link_to "下書き一覧", index_draft_lifehacks_path, class: "btn btn-dark px-4" %>
+  <% end %>
+</h1>
+
 <%= form_with model: lifehack do |f| %>
   <h4>タイトル</h4>
   <%= f.text_field :title, autofocus: true, placeholder: "タイトル（2文字以上、20文字以内）を入力してください。", class: 'form-control' %>
@@ -61,11 +66,8 @@
       <div class="col-2">
         <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4" %>
       </div>
-      <div class="col-4">
+      <div class="col-10">
         <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4" %>
-      </div>
-      <div class="col-6">
-        <%= link_to "下書き一覧", index_draft_lifehacks_path, class: "btn btn-dark px-4" %>
       </div>
     <% else %>
       <% if lifehack.is_draft == true %>

@@ -21,6 +21,14 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def index_user
+    @user = User.find(params[:id])
+    @lifehacks = Lifehack.where(user_id: params[:id])
+                         .page(params[:page]).per(10)
+                         .order(created_at: :desc)
+                         .where(is_draft: false)
+  end
 
   private
 
