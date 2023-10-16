@@ -19,12 +19,10 @@
         <% end %>
         <td><%= lifehack_comment.comment %></td>
         <td>
-          <% if lifehack_comment.user == current_user %>
-            <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-          <% elsif admin_signed_in? %>
+          <% if admin_signed_in? %>
             <%= link_to "管理者権限によりコメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
-          <% else %>
-
+          <% else lifehack_comment.user == current_user %>
+            <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
           <% end %>
         </td>
       </tr>
