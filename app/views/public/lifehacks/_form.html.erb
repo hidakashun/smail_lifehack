@@ -6,9 +6,9 @@
 
 <%= form_with model: lifehack do |f| %>
   <h4 class="mt-1">タイトル</h4>
-  <%= f.text_field :title, autofocus: true, placeholder: "タイトル（2文字以上、20文字以内）を入力してください.", class: 'form-control' %>
+  <%= f.text_field :title, autofocus: true, placeholder: "タイトル（2文字以上、20文字以内）を入力してください。", class: 'form-control' %>
   <h4 class="mt-5">本文</h4>
-  <%= f.text_area :body, placeholder: "本文（10文字以上、200文字以内）を入力してください.", class: 'form-control' %>
+  <%= f.text_area :body, rows: '5', placeholder: "本文（10文字以上、200文字以内）を入力してください。", class: 'form-control' %><!--5行分の入力フォーム-->
   <h4 class="mt-5">画像解説</h4>
   <h6>最大3枚まで投稿可能</h6>
   <p id="error-message" style="color: red; display: none;">画像は最大3枚まで投稿できます。</p>
@@ -18,7 +18,7 @@
   <script>
     document.getElementById('image-upload').addEventListener('change', function(e) {
       const files = e.target.files;
-      if (files.length > 3) {
+      if (files.length > 3) { // 画像の枚数が三枚より多いとき
         document.getElementById('error-message').style.display = 'block';
         e.preventDefault(); // 画像の選択をキャンセル
       } else {
@@ -59,15 +59,15 @@
   <!-- tagについての記述 -->
   <div class="form-group">
     <h4 class="mt-5">タグ設定</h4>
-    <%= f.text_field :tag, placeholder: "タグ検索で入力するタグ（2文字以上、20文字以内）を設定してください.", class: 'form-control' %>
+    <%= f.text_field :tag, placeholder: "タグ検索で入力するタグ（2文字以上、20文字以内）を設定してください。", class: 'form-control' %>
   </div>
   <div class="row">
     <% if lifehack.id.nil? %>
       <div class="col-2">
-        <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4" %>
+        <%= f.submit '新規投稿', :name => 'post', class: "btn btn-dark px-4 mb-4" %>
       </div>
       <div class="col-10">
-        <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4" %>
+        <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-dark px-4 mb-4" %>
       </div>
     <% else %>
       <% if lifehack.is_draft == true %>
@@ -79,7 +79,7 @@
         </div>
       <% else %>
         <div class="col-2">
-          <%= f.submit '変更を保存', :name => 'update_post', class: "btn btn-dark px-4" %>
+          <%= f.submit '変更を保存', :name => 'update_post', class: "btn btn-dark px-4 mb-4" %>
         </div>
       <% end %>
     </div>

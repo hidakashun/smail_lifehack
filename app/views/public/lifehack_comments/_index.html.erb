@@ -1,31 +1,33 @@
-<table>
-  <tbody>
-    <% lifehack.lifehack_comments.each do |lifehack_comment| %>
-      <tr>
-        <% if user_signed_in? %>
-          <td>
-            <%= link_to user_path(lifehack_comment.user) do %><!--ユーザー詳細ページ-->
-              <%= image_tag lifehack_comment.user.get_profile_image(100, 100) %><br>
-              <%= lifehack_comment.user.account_name %>
-            <% end %>
-          </td>
-        <% elsif admin_signed_in? %>
-          <td>
-            <%= link_to admin_user_path(lifehack_comment.user) do %><!--管理者ユーザー詳細ページ-->
-              <%= image_tag lifehack_comment.user.get_profile_image(100, 100) %><br>
-              <%= lifehack_comment.user.account_name %>
-            <% end %>
-          </td>
-        <% end %>
-        <td><%= lifehack_comment.comment %></td>
-        <td>
-          <% if admin_signed_in? %>
-            <%= link_to "管理者権限によりコメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
-          <% elsif lifehack_comment.user == current_user %>
-            <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
+<div style="overflow-x: auto; max-height: 300px;"><!--スクロールバー、縦方向の高さが最大で300ピクセルに制限-->
+  <table class="table table-hover"><!--ホバー状態が有効-->
+    <tbody>
+      <% lifehack.lifehack_comments.each do |lifehack_comment| %>
+        <tr>
+          <% if user_signed_in? %>
+            <td>
+              <%= link_to user_path(lifehack_comment.user) do %><!--ユーザー詳細ページ-->
+                <%= image_tag lifehack_comment.user.get_profile_image(50, 50) %><br>
+                <%= lifehack_comment.user.account_name %>
+              <% end %>
+            </td>
+          <% elsif admin_signed_in? %>
+            <td>
+              <%= link_to admin_user_path(lifehack_comment.user) do %><!--管理者ユーザー詳細ページ-->
+                <%= image_tag lifehack_comment.user.get_profile_image(50, 50) %><br>
+                <%= lifehack_comment.user.account_name %>
+              <% end %>
+            </td>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <td><%= lifehack_comment.comment %></td>
+          <td>
+            <% if admin_signed_in? %>
+              <%= link_to "管理者権限によりコメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
+            <% elsif lifehack_comment.user == current_user %>
+              <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
