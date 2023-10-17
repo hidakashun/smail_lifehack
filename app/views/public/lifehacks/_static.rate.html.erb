@@ -1,6 +1,8 @@
 <div id="star_<%= lifehack.id %>"></div>
 <script>
-  $(document).on('turbolinks:load', function() {
+  //$(document).on('turbolinks:load', function() {
+  //Turbolinks.start()を使わないようにしているので上記の記述は使えない。
+  $(document).ready(function() {
     let elem = document.querySelector('#star_<%= lifehack.id %>');
     if (elem == null) return;
 
