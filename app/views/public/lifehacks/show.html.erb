@@ -1,82 +1,86 @@
 <div class="container py-1">
   <h3 class="mt-3">
     <i class="fa-regular fa-file"></i>
-      投稿詳細
+    投稿詳細
   </h3>
   <div class="row justify-content-center">
-  <table class="table table-borderless text-center">
-    <tr>
-      <td>タイトル</td>
-      <td><%= @lifehack.title %></td>
-    <tr>
-      <td>本文</td>
-      <td><%= simple_format(@lifehack.body) %></td>
-    </tr>
-    <tr>
-      <td>おすすめ度</td>
-      <td><%= render "static.rate", lifehack: @lifehack %></td>
-    </tr>
-    <tr>
-      <td>タグ</td>
-      <td><%=link_to @lifehack.tag,tagsearches_search_path(content: @lifehack.tag)%></td>
-    </tr>
-    <tr>
-      <td>画像解説</td>
-      <td>
-        <% if @lifehack.lifehack_images.attached? %>
-          <% @lifehack.lifehack_images.each do |image| %>
-            <%= image_tag image.variant(resize: "300x300") %>
+    <div class="col-12">
+      <table class="table table-borderless text-center">
+        <tr>
+          <td>タイトル</td>
+          <td><%= @lifehack.title %></td>
+        </tr>
+        <tr>
+          <td>本文</td>
+          <td><%= simple_format(@lifehack.body) %></td>
+        </tr>
+        <tr>
+          <td>おすすめ度</td>
+          <td><%= render "static.rate", lifehack: @lifehack %></td>
+        </tr>
+        <tr>
+          <td>タグ</td>
+          <td><%= link_to @lifehack.tag, tagsearches_search_path(content: @lifehack.tag) %></td>
+        </tr>
+        <tr>
+          <td>画像解説</td>
+          <td>
+            <% if @lifehack.lifehack_images.attached? %>
+              <% @lifehack.lifehack_images.each do |image| %>
+                <%= image_tag image.variant(resize: "300x300") %>
+              <% end %>
+            <% else %>
+              <%= image_tag 'no_lifehack_image.jpg' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>投稿日</td>
+          <td><%= @lifehack.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td>いいね数</td>
+          <% if user_signed_in? %>
+            <td class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
+              <%= render "public/favorites/btn", lifehack: @lifehack %>
+            </td>
+          <% else %>
+            <td>
+              <i class="fas fa-heart" aria-hidden="true"></i>
+              <%= @lifehack.favorites.count %>
+            </td>
           <% end %>
-        <% else %>
-            <%= image_tag 'no_lifehack_image.jpg' %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>投稿日</td>
-      <td><%= @lifehack.created_at.strftime('%Y/%m/%d') %></td>
-    </tr>
-    <tr>
-      <td>いいね数</td>
+        </tr>
+        <tr>
+          <td>コメント数</td>
+          <td class="lifehack-comments-counter"><!--コメント非同期通信-->
+            <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
+          </td>
+        </tr>
+        <tr>
+          <td>コメント一覧</td>
+          <td>
+            <div class="lifehack-comments-index">
+              <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-12">
       <% if user_signed_in? %>
-      <td class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
-          <%= render "public/favorites/btn", lifehack: @lifehack %>
-      </td>
-      <% else %>
-      <td>
-        <i class="fas fa-heart" aria-hidden="true"></i>
-          <%= @lifehack.favorites.count %>
-      </td>
+        <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
       <% end %>
-    </tr>
-    <tr>
-      <td>コメント数</td>
-      <td class="lifehack-comments-counter"><!--コメント非同期通信-->
-        <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
-      </td>
-    </tr>
-    <tr>
-      <td>コメント一覧</td>
-      <td>
-        <div class="lifehack-comments-index">
-          <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能-->
-        </div>
-      </td>
-    </tr>
-  </table>
-    <% if user_signed_in? %>
-      <%= render "public/lifehack_comments/form", lifehack: @lifehack, lifehack_comment: @lifehack_comment %><!--コメント機能-->
-    <% end %>
+    </div>
   </div>
-  <div class="row justify-content-center py-4" >
+  <div class="row justify-content-center py-4">
     <% if @lifehack.user == current_user %>
-      <div class="edit_btn mr-5">
+      <div class="col-4 offset-2">
         <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4 edit_lifehack_#{@lifehack.id}" %>
       </div>
-      <div class="destroy_btn ml-5">
-        <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn  btn-danger px-4 destroy_lifehack_#{@lifehack.id}"  %>
+      <div class="col-4 offset-2">
+        <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger px-4 destroy_lifehack_#{@lifehack.id}"  %>
       </div>
     <% end %>
-
   </div>
 </div>

@@ -1,46 +1,42 @@
-<div class="row">
-  <div class="col-12 text-start">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>投稿日</th>
-          <th>ライフハック</th>
-          <th>おすすめ度</th>
-          <th>タグ</th>
-          <th>いいね</th>
-          <th>コメント数</th>
-          <th>投稿ユーザー</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% lifehacks.each do |lifehack| %>
-          <tr>
-            <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= link_to lifehack.title, lifehack, class: "text-reset" %></td>
-            <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
-            <td><%= link_to lifehack.tag, tagsearches_search_path(content: lifehack.tag) %></td><!--タグ機能-->
-            <% if user_signed_in? %>
-              <td class=<%= "favorite-" + lifehack.id.to_s %><!--いいね機能-->
-                <%= render "public/favorites/btn", lifehack: lifehack %>
-              </td>
-            <% else %>
-              <td>
-                <%= link_to new_user_session_path do %>
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                  <%= lifehack.favorites.count %>
-                <% end %>
-              </td>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>投稿日</th>
+      <th>ライフハック</th>
+      <th>おすすめ度</th>
+      <th>タグ</th>
+      <th>いいね</th>
+      <th>コメント数</th>
+      <th>投稿ユーザー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% lifehacks.each do |lifehack| %>
+      <tr>
+        <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= link_to lifehack.title, lifehack, class: "text-reset" %></td>
+        <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
+        <td><%= link_to lifehack.tag,tagsearches_search_path(content: lifehack.tag)%></td><!--タグ機能-->
+        <% if user_signed_in? %>
+          <td class=<%= "favorite-" + lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
+            <%= render "public/favorites/btn", lifehack: lifehack %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-heart" aria-hidden="true"></i>
+              <%= lifehack.favorites.count %>
             <% end %>
-            <td><%= render "public/lifehack_comments/counter", lifehack: lifehack %></td><!--コメント機能-->
-            <td>
-              <%= link_to user_path(lifehack.user) do %>
-                <%= image_tag lifehack.user.get_profile_image(50, 50) %>
-                <%= lifehack.user.account_name %>
-              <% end %>
-            </td>
-          </tr>
+          </td>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+        <td><%= render "public/lifehack_comments/counter", lifehack: lifehack %></td><!--コメント機能-->
+        <td>
+          <%= link_to user_path(lifehack.user) do %>
+            <%= image_tag lifehack.user.get_profile_image(50, 50) %>
+            <%= lifehack.user.account_name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

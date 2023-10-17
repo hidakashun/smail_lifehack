@@ -1,32 +1,42 @@
-<div class="container">
+<div class="container py-1">
   <div class="row">
-    <div class="col">
-      <h3 class="my-5">ユーザー情報編集</h3>
+    <div class="col-12 text-start">
+      <h3 class="mt-3 mb-5">
+        <i class="fa-regular fa-user"></i>
+        ユーザー情報編集
+      </h3>
       <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
         <%= render 'layouts/error', obj: @user %>
-          <table class="table table-borderless ">
-            <tr>
-              <td>アカウント名</td>
-              <td><%= f.text_field :account_name, autofocus: true, placeholder: "アカウント名を入力してください。", class: "form-control name" %></td>
-            </tr>
-            <tr>
-              <td>プロフィール画像</td>
-              <td>
-                <%= image_tag @user.get_profile_image(200, 200) %><br>
-                <%= f.file_field :profile_image, class: "mt-2 form-control-file user_image", accept: 'image/*' %>
-              </td>
-            </tr>
-            <tr>
-              <td>紹介文</td>
-              <td><%= f.text_area :introduction, placeholder: "紹介文を書きましょう！", class: "form-control introduction" %></td>
-            </tr>
-            <tr>
-              <td></td>
+        <table class="table table-borderless">
+          <tr>
+            <td>アカウント名</td>
+            <td>
+              <%= f.text_field :account_name, autofocus: true, placeholder: "アカウント名を入力してください。", class: "form-control name" %>
+            </td>
+          </tr>
+          <tr>
+            <td>プロフィール画像</td>
+            <td>
+              <%= image_tag @user.get_profile_image(200, 200) %><br>
+              <%= f.file_field :profile_image, class: "mt-2 form-control-file user_image", accept: 'image/*' %>
+            </td>
+          </tr>
+          <tr>
+            <td>紹介文</td>
+            <td>
+              <%= f.text_area :introduction, placeholder: "紹介文を書きましょう！", class: "form-control introduction" %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
               <% if @user == current_user %>
-              <td><%= f.submit "編集内容を保存", class:"btn btn-dark" %>&ensp;<%= link_to "退会する", confirm_users_path, class:"btn btn-danger" %></td>
+                <%= f.submit "編集内容を保存", class:"btn btn-dark mr-5" %>
+                <%= link_to "退会する", confirm_users_path, class:"btn btn-danger ml-5" %>
               <% end %>
-            </tr>
-          </table>
+            </td>
+          </tr>
+        </table>
       <% end %>
     </div>
   </div>

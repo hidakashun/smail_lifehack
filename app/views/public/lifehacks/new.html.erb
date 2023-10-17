@@ -1,7 +1,20 @@
-<h3 class="mt-3">
-  <i class="fa-regular fa-pen-to-square"></i>
-    新規投稿
-</h3>
-<%= render 'layouts/error', obj: @lifehack %>
-
-<%= render "public/lifehacks/form", lifehack: @lifehack %>
+<div class="container py-1">
+  <div class="row">
+    <div class="col-12 text-start">
+      <h3 class="mt-3">
+        <i class="fa-regular fa-pen-to-square"></i>
+        新規投稿
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1 text-start">
+      <%= render 'layouts/error', obj: @lifehack %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1 text-start">
+      <%= render "public/lifehacks/form", lifehack: @lifehack %>
+    </div>
+  </div>
+</div>

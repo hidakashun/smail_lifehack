@@ -1,12 +1,12 @@
 <% if lifehack.favorited_by?(current_user) %>
   <%= link_to lifehack_favorites_path(lifehack), method: :delete, remote: true do %>
-  <!--link_to内にremote; true を追加することで、HTMLリクエストではなく、JavaScriptのリクエストがfavoritesコントローラに送られる！！-->
+    <!-- link_to内にremote: true を追加することで、HTMLリクエストではなく、JavaScriptのリクエストがfavoritesコントローラに送られる！！ -->
     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
     <%= lifehack.favorites.count %>
   <% end %>
 <% else %>
   <%= link_to lifehack_favorites_path(lifehack), method: :post, remote: true do %>
-  <!--link_to内にremote; true を追加することで、HTMLリクエストではなく、JavaScriptのリクエストがfavoritesコントローラに送られる！！-->
+    <!-- link_to内にremote: true を追加することで、HTMLリクエストではなく、JavaScriptのリクエストがfavoritesコントローラに送られる！！ -->
     <i class="fas fa-heart" aria-hidden="true"></i>
     <%= lifehack.favorites.count %>
   <% end %>

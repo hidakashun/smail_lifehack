@@ -7,6 +7,10 @@
       </h3>
     </div>
   </div>
-    <%= render 'index', users: @users %>
+  <div class="row">
+    <div class="col-12 text-start">
+      <%= render 'index', users: @users %>
+    </div>
+  </div>
     <%= render "layouts/page", obj: @users %>
 </div>

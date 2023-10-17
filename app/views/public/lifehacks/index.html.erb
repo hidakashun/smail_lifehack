@@ -7,6 +7,10 @@
       </h3>
     </div>
   </div>
-    <%= render 'index', lifehacks: @lifehacks %>
+  <div class="row">
+    <div class="col-12 text-start">
+      <%= render 'index', lifehacks: @lifehacks %>
+    </div>
+  </div>
     <%= render "layouts/page", obj: @lifehacks %>
 </div>
