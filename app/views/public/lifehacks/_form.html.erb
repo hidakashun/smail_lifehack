@@ -8,11 +8,25 @@
   <h4 class="mt-1">タイトル</h4>
   <%= f.text_field :title, autofocus: true, placeholder: "タイトル（2文字以上、20文字以内）を入力してください。", class: 'form-control' %>
   <h4 class="mt-5">本文</h4>
-  <%= f.text_area :body, rows: '5', placeholder: "本文（10文字以上、200文字以内）を入力してください。", class: 'form-control' %><!--5行分の入力フォーム-->
+  <%= f.text_area :body, rows: '5', placeholder: "本文（10文字以上、200文字以内）を入力してください。", class: 'form-control' %>
   <h4 class="mt-5">画像解説</h4>
   <h6>最大3枚まで投稿可能</h6>
   <p id="error-message" style="color: red; display: none;">画像は最大3枚まで投稿できます。</p>
   <%= f.file_field :lifehack_images, multiple: true, accept: "image/*", id: "image-upload" %>
+
+  <% if action_name == "new" %><!-- newページ用のコード -->
+    <h6 class="mt-4">画像を投稿されない場合下記の画像が表示されます。</h6>
+    <%= image_tag 'no_lifehack_image.jpg' %>
+  <% else action_name == "edit" %><!-- editページ用のコード -->
+    <h6 class="mt-4">現在この投稿には下記の画像が表示されています。</h6>
+    <% if @lifehack.lifehack_images.attached? %>
+      <% @lifehack.lifehack_images.each do |image| %>
+        <%= image_tag image.variant(resize: "300x300") %>
+      <% end %>
+    <% else %>
+      <%= image_tag 'no_lifehack_image.jpg' %>
+    <% end %>
+  <% end %>
 
   <!-- 画像枚数制限をかけるJavaScriptコード-->
   <script>
@@ -35,8 +49,6 @@
       <div id="post_raty"></div>
     </div>
     <script>
-      //$(document).on('turbolinks:load', function() {
-      //Turbolinks.start()を使わないようにしているので上記の記述は使えない。
       $(document).ready(function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;

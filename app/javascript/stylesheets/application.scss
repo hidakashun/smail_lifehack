@@ -7,6 +7,11 @@ body {
   background-size: cover;
 }
 
+
+div.custom.heart td .icon-container i.fas.fa-heart {
+  color: red; /* お気に入りページの場合の色 */
+}
+
 /* styles.css */
 .custom-select {
   background-color: #f2f2f2;

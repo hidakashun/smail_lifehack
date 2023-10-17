@@ -18,8 +18,10 @@
         <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
         <td><%= link_to lifehack.tag, tagsearches_search_path(content2: lifehack.tag) %></td>
         <td>
-          <i class="fas fa-heart" aria-hidden="true"></i>
-          <%= lifehack.favorites.count %>
+          <div class="icon-container">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <%= lifehack.favorites.count %>
+          </div>
         </td>
         <td>コメント数: <%= lifehack.lifehack_comments.count %></td>
         <td>
