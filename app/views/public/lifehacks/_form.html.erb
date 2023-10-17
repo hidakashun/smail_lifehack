@@ -35,7 +35,9 @@
       <div id="post_raty"></div>
     </div>
     <script>
-      $(document).on('turbolinks:load', function() {
+      //$(document).on('turbolinks:load', function() {
+      //Turbolinks.start()を使わないようにしているので上記の記述は使えない。
+      $(document).ready(function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;
 
