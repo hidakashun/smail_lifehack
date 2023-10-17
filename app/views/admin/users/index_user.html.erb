@@ -1,3 +1,16 @@
-<p><%= "#{@user.account_name}の投稿一覧" %></p>
-<%= render "admin/lifehacks/index", lifehacks: @lifehacks %>
-<%= render "layouts/page", obj: @lifehacks %>
+<div class="container py-1">
+  <div class="row">
+    <div class="col-12 text-start">
+      <h3 class="mt-3">
+        <i class="fa-solid fa-list"></i>
+          <%= "#{@user.account_name}の投稿履歴一覧" %>
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-start">
+      <%= render "admin/lifehacks/index", lifehacks: @lifehacks %>
+    </div>
+  </div>
+    <%= render "layouts/page", obj: @lifehacks %>
+</div>

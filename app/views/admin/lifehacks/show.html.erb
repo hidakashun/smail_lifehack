@@ -1,61 +1,68 @@
-
-<div class="container py-5">
-  <h3>投稿詳細</h3>
+<div class="container py-1">
+  <h3 class="mt-3">
+    <i class="fa-regular fa-file"></i>
+    投稿詳細
+  </h3>
   <div class="row justify-content-center">
-  <table class="table table-borderless text-center">
-    <tr>
-      <td>タイトル</td>
-      <td><%= @lifehack.title %></td>
-    <tr>
-      <td>本文</td>
-      <td><%= simple_format(@lifehack.body) %></td>
-    </tr>
-    <tr>
-      <td>おすすめ度</td>
-      <td><%= render "public/lifehacks/static.rate", lifehack: @lifehack %></td>
-    </tr>
-    <tr>
-      <td>タグ</td>
-      <td>未実装</td>
-    </tr>
-    <tr>
-      <td>画像解説</td>
-      <td>
-        <% if @lifehack.lifehack_images.attached? %>
-          <% @lifehack.lifehack_images.each do |image| %>
-            <%= image_tag image.variant(resize: "300x300") %>
-          <% end %>
-        <% else %>
-            <%= image_tag 'no_lifehack_image.jpg' %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>投稿日</td>
-      <td><%= @lifehack.created_at.strftime('%Y/%m/%d') %></td>
-    </tr>
-    <tr>
-      <td>いいね数</td>
-      <td><i class="fas fa-heart" aria-hidden="true"></i>
-       <%= @lifehack.favorites.count %>
-      </td>
-    </tr>
-    <tr>
-      <td>コメント数</td>
-      <td class="lifehack-comments-counter"><!--コメント非同期通信-->
-        <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
-      </td>
-    </tr>
-    <tr>
-      <td>コメント一覧</td>
-      <td class="lifehack-comments-index">
-        <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能一覧、削除-->
-      </td>
-    </tr>
-  </table>
-  <div class="row justify-content-center">
-
-      <%= link_to '管理者権限により投稿を削除する', admin_lifehack_path(@lifehack), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn  btn-danger  destroy_lifehack_#{@lifehack.id}"  %>
+    <div class="col-12">
+      <table class="table table-borderless text-center">
+        <tr>
+          <td>タイトル</td>
+          <td><%= @lifehack.title %></td>
+        </tr>
+        <tr>
+          <td>本文</td>
+          <td><%= simple_format(@lifehack.body) %></td>
+        </tr>
+        <tr>
+          <td>おすすめ度</td>
+          <td><%= render "public/lifehacks/static.rate", lifehack: @lifehack %></td>
+        </tr>
+        <tr>
+          <td>タグ</td>
+          <td>未実装</td>
+        </tr>
+        <tr>
+          <td>画像解説</td>
+          <td>
+            <% if @lifehack.lifehack_images.attached? %>
+              <% @lifehack.lifehack_images.each do |image| %>
+                <%= image_tag image.variant(resize: "300x300") %>
+              <% end %>
+            <% else %>
+              <%= image_tag 'no_lifehack_image.jpg' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>投稿日</td>
+          <td><%= @lifehack.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td>いいね数</td>
+          <td>
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <%= @lifehack.favorites.count %>
+          </td>
+        </tr>
+        <tr>
+          <td>コメント数</td>
+          <td class="lifehack-comments-counter"><!--コメント非同期通信-->
+            <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
+          </td>
+        </tr>
+        <tr>
+          <td>コメント一覧</td>
+          <td class="lifehack-comments-index">
+            <%= render "public/lifehack_comments/index", lifehack: @lifehack %><!--コメント機能一覧、削除-->
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= link_to '管理者権限により投稿を削除する', admin_lifehack_path(@lifehack), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger destroy_lifehack_#{@lifehack.id}"  %>
+    </div>
   </div>
 </div>

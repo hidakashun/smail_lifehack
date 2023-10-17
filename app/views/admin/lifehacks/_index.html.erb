@@ -12,23 +12,23 @@
   </thead>
   <tbody>
     <% lifehacks.each do |lifehack| %>
-    <tr>
-      <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= link_to lifehack.title, admin_lifehack_path(lifehack), class: " text-reset" %></td>
-      <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
-      <td><%=link_to lifehack.tag,tagsearches_search_path(content: lifehack.tag)%></td>
-      <td>
+      <tr>
+        <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= link_to lifehack.title, admin_lifehack_path(lifehack), class: "text-reset" %></td>
+        <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
+        <td><%= link_to lifehack.tag, tagsearches_search_path(content: lifehack.tag) %></td>
+        <td>
           <i class="fas fa-heart" aria-hidden="true"></i>
           <%= lifehack.favorites.count %>
-      </td>
-      <td>コメント数: <%= lifehack.lifehack_comments.count %></td>
-      <td>
-        <%= link_to admin_user_path(lifehack.user) do %>
-        <%= image_tag lifehack.user.get_profile_image(50, 50) %>
-        <%= lifehack.user.account_name %>
-        <% end %>
-      </td>
-    </tr>
+        </td>
+        <td>コメント数: <%= lifehack.lifehack_comments.count %></td>
+        <td>
+          <%= link_to admin_user_path(lifehack.user) do %>
+            <%= image_tag lifehack.user.get_profile_image(50, 50) %>
+            <%= lifehack.user.account_name %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

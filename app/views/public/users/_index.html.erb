@@ -9,19 +9,20 @@
   </thead>
   <tbody>
     <% users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image(100, 100) %></td>
-      <td><%= user.account_name %></td>
-      <td>
-        <% if user.is_active == true %>
-          <p class="text-secondary">退会</p>
-        <% else %>
-          <p class="text-success">有効</p>
-        <% end %></td>
-      <td>
-        <%= link_to "Show", user_path(user.id) %>
-      </td>
-    </tr>
+      <tr>
+        <td><%= image_tag user.get_profile_image(100, 100) %></td>
+        <td><%= user.account_name %></td>
+        <td>
+          <% if user.is_active == true %>
+            <p class="text-secondary">退会</p>
+          <% else %>
+            <p class="text-success">有効</p>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "Show", user_path(user.id) %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

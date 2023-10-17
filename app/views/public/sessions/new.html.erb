@@ -7,7 +7,6 @@
       <%= form_with model: @user, url: user_session_path do |f| %>
         <div class="w-100 my-4 py-4">
           <p class="alert text-center text-danger"><%= alert %></p>
-
           <table class="table table-borderless mb-1">
             <tr>
               <td class="text-right"><%= f.label :email, "メールアドレス" %></td>
@@ -17,7 +16,7 @@
             <tr>
               <td class="text-right"><%= f.label :password, "パスワード" %></td>
               <td><span class="text-muted necessary-field p-1 px-2 ml-2 small rounded">必須</span></td>
-              <td><%= f.password_field :password, placeholder: "パスワード(6 文字以上)",class:"form-control w-75" %></td>
+              <td><%= f.password_field :password, placeholder: "パスワード(6 文字以上)", class:"form-control w-75" %></td>
             </tr>
           </table>
         </div>
