@@ -8,7 +8,7 @@ body {
 }
 
 
-div.custom.heart td .icon-container i.fas.fa-heart {
+.custom.heart td .icon-container i.fas.fa-heart {
   color: red; /* お気に入りページの場合の色 */
 }
 
@@ -16,4 +16,33 @@ div.custom.heart td .icon-container i.fas.fa-heart {
 .custom-select {
   background-color: #f2f2f2;
   font-size: 16px;
+}
+
+
+
+/* ページネーションリンクにスタイルを適用 */
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+/* ページネーションリンクのホバー時のスタイル */
+.pagination a:hover {
+  background: #93c9ff; /* ホバー時の背景色を変更 */
+}
+
+/* アクティブなページへのスタイル */
+.pagination .active a {
+  background: #93c9ff; /* アクティブなページの背景色を変更 */
+  color: #fff; /* テキストの色を変更 */
+}
+
+/* 現在のページ番号の背景色を変更 */
+.pagination .page.current {
+  background-color: #93c9ff; /* 好きな背景色に変更 */
+  color: #fff; /* テキストの色を変更（背景に合わせたり） */
+  border-radius: 15px; /* 角を丸くするなど、必要に応じてスタイルを調整 */
+  padding: 2px 5px;
 }

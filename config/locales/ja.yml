@@ -1,11 +1,18 @@
 ja:
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
   activerecord:
     attributes:
       user:
-        account_name: アカウント名
-        introduction: 紹介文
+        account_name: "アカウント名"
+        introduction: "紹介文"
       lifehack:
-        title: タイトル
-        body: 本文
-        tag: タグ
+        title: "タイトル"
+        body: "本文"
+        tag: "タグ"
   activemodel:   # Formオブジェクトを用いた場合
