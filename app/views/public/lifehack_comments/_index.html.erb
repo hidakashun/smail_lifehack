@@ -1,18 +1,23 @@
-<div style="overflow-x: auto; max-height: 300px;"><!--スクロールバー、縦方向の高さが最大で300ピクセルに制限-->
-  <table class="table table-hover"><!--ホバー状態が有効-->
+<div style="overflow-x: auto; max-height: 300px;">
+  <table class="table table-hover">
+    <colgroup>
+      <col style="width: 100px;"> <!-- 列1の幅を100pxに設定 -->
+      <col style="width: 200px;"> <!-- 列2の幅を200pxに設定 -->
+      <col style="width: 150px;"> <!-- 列3の幅を150pxに設定 -->
+    </colgroup>
     <tbody>
       <% lifehack_comments.each do |lifehack_comment| %>
         <tr>
-          <% if user_signed_in? %>
+          <% if admin_signed_in? %>
             <td>
-              <%= link_to user_path(lifehack_comment.user) do %><!--ユーザー詳細ページ-->
+              <%= link_to admin_user_path(lifehack_comment.user) do %><!--管理者ユーザー詳細ページ-->
                 <%= image_tag lifehack_comment.user.get_profile_image(50, 50) %><br>
                 <%= lifehack_comment.user.account_name %>
               <% end %>
             </td>
-          <% elsif admin_signed_in? %>
+          <% else %>
             <td>
-              <%= link_to admin_user_path(lifehack_comment.user) do %><!--管理者ユーザー詳細ページ-->
+              <%= link_to user_path(lifehack_comment.user) do %><!--ユーザー詳細ページ-->
                 <%= image_tag lifehack_comment.user.get_profile_image(50, 50) %><br>
                 <%= lifehack_comment.user.account_name %>
               <% end %>

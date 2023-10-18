@@ -13,6 +13,8 @@ module SmailLifehack
 
     # 日本語の言語設定
     config.i18n.default_locale = :ja
+    #'Tokyo' タイムゾーンを設定
+    config.time_zone = 'Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #
