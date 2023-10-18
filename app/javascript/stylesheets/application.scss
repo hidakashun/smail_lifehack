@@ -1,6 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 
 
+
 body {
 //url("../images/background_image.jpg")；の「../」は階層のこと
   background-image: url("../images/background_image.jpg");
@@ -17,7 +18,6 @@ body {
   background-color: #f2f2f2;
   font-size: 16px;
 }
-
 
 
 /* ページネーションリンクにスタイルを適用 */
