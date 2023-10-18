@@ -25,11 +25,11 @@
         <tr>
           <td>画像解説</td>
           <td>
-            <% if @lifehack.lifehack_images.attached? %>
+            <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
               <% @lifehack.lifehack_images.each do |image| %>
                 <%= image_tag image.variant(resize: "300x300") %>
               <% end %>
-            <% else %>
+            <% else %><!--画像追加がされなかったとき-->
               <%= image_tag 'no_lifehack_image.jpg' %>
             <% end %>
           </td>

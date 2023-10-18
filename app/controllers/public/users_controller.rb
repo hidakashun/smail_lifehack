@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    if current_user.email == 'guest@example.com'
+    if current_user.email == 'guest@example.com'# メールアドレスで機能を分けてる
       redirect_to root_path, notice: "ゲストユーザーは退会できません。"
     else
       @user = current_user
