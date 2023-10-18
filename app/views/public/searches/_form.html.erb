@@ -7,7 +7,7 @@
             <i class="fa-solid fa-magnifying-glass fa-beat"></i>
           </td>
           <td>
-            <%= f.text_field :content1, id: "field1", size: "30", placeholder: "キーワードを入力してください。", class: "form-control" %>
+            <%= f.text_field :keyword_content, id: "field1", size: "30", placeholder: "キーワードを入力してください。", class: "form-control" %>
           </td>
           <td>
             <%= f.select :model, options_for_select({ "ユーザー" => "user", "ライフハック" => "lifehack" }), {}, class: "custom-select" %>
