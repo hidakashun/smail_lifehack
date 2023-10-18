@@ -12,6 +12,7 @@ class Public::LifehacksController < ApplicationController
   def show
     @lifehack = Lifehack.find(params[:id])
     @lifehack_comment = LifehackComment.new
+    @lifehack_comments = @lifehack.lifehack_comments.order(created_at: :desc)#ライフハックに紐づいたライフハックのコメントの情報を取得
   end
 
   def edit

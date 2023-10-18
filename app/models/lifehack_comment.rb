@@ -3,4 +3,5 @@ class LifehackComment < ApplicationRecord
   belongs_to :lifehack
 
   validates :comment, presence: true
+
 end

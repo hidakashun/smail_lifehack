@@ -1,7 +1,7 @@
 <div style="overflow-x: auto; max-height: 300px;"><!--スクロールバー、縦方向の高さが最大で300ピクセルに制限-->
   <table class="table table-hover"><!--ホバー状態が有効-->
     <tbody>
-      <% lifehack.lifehack_comments.each do |lifehack_comment| %>
+      <% lifehack_comments.each do |lifehack_comment| %>
         <tr>
           <% if user_signed_in? %>
             <td>
@@ -20,10 +20,11 @@
           <% end %>
           <td><%= lifehack_comment.comment %></td>
           <td>
+            <%= lifehack_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
             <% if admin_signed_in? %>
-              <%= link_to "管理者権限によりコメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
+              <%= link_to "管理者権限によりコメントを削除する", lifehack_lifehack_comment_path(lifehack_comment.lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
             <% elsif lifehack_comment.user == current_user %>
-              <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
+              <%= link_to "コメントを削除する", lifehack_lifehack_comment_path(lifehack_comment.lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
             <% end %>
           </td>
         </tr>

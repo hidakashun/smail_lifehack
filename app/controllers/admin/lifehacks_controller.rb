@@ -2,6 +2,7 @@ class Admin::LifehacksController < ApplicationController
 
   def show
      @lifehack = Lifehack.find(params[:id])
+     @lifehack_comments = @lifehack.lifehack_comments.order(created_at: :desc)
   end
 
   def destroy

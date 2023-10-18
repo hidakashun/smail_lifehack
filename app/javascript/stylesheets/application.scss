@@ -19,6 +19,21 @@ body {
   font-size: 16px;
 }
 
+.lifehack_item {
+  font-size: 23px; /* テーブルセル内のテキストのフォントサイズ */
+}
+
+.lifehack_detail {
+  font-size: 18px; /* テーブルセル内のテキストのフォントサイズ */
+}
+
+.lifehack-comments-counter {
+  font-size: 18px; /* テーブルセル内のテキストのフォントサイズ */
+}
+
+.lifehack-comments-index {
+  font-size: 18px; /* テーブルセル内のテキストのフォントサイズ */
+}
 
 /* ページネーションリンクにスタイルを適用 */
 .pagination a {
