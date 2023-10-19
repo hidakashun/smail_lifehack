@@ -18,6 +18,7 @@ body {
 
 .slider {
     visibility: hidden;
+    z-index: -1;
 }
 
 .slider.slick-initialized {
@@ -34,6 +35,53 @@ body {
 .slick-next {
     right: 10px;
 }
+
+.main-visual-content {
+  text-align: center;
+  width: 60%; /* 横幅60% */
+  height: 400px; /* 親の高さに揃える */
+  background-color:rgba(255,255,255,0.7); /*白背景透過
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
+}
+
+.main-visual-text {
+  color: #000000; /* 文字色を白に変更 */
+  font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .custom.heart td .icon-container i.fas.fa-heart {
   color: red; /* お気に入りページの場合の色 */
