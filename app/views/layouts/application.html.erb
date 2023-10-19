@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/><!--スライドショー-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/><!--スライドショー-->
     <script src="https://kit.fontawesome.com/cdce8a28a2.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -24,5 +26,21 @@
       </div>
     </main>
     <%= render 'layouts/footer' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+      $(function(){
+      //スライドショー
+        $('.slider').slick({
+        //スライドの矢印を非表示にする
+        arrows: false,
+        //ドットを表示させる
+        dots: true,
+        //スライドショーの自動再生(カーソルが画像の上に乗るとスライドショーが止まる)
+        autoplay: true,
+        //自動再生のスピード(1000→1秒、3000→3秒)
+        autoplaySpeed: 3000,
+        });
+      });
+    </script>
   </body>
 </html>

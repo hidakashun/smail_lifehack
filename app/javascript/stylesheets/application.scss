@@ -8,6 +8,32 @@ body {
   background-size: cover;
 }
 
+/* 画像のサイズを変更するクラス */
+.image-size {
+    width: 100%; /* 幅を710pxに設定 */
+    height: 400px; /* 高さを400pxに設定 */
+}
+
+/*スライドショー*/
+
+.slider {
+    visibility: hidden;
+}
+
+.slider.slick-initialized {
+    visibility: visible;
+}
+
+.slick-prev, .slick-next {
+    z-index: 1;
+}
+.slick-prev {
+    left: 10px;
+}
+
+.slick-next {
+    right: 10px;
+}
 
 .custom.heart td .icon-container i.fas.fa-heart {
   color: red; /* お気に入りページの場合の色 */
