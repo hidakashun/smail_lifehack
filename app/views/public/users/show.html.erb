@@ -19,27 +19,49 @@
         <% end %>
       </div>
       <br>
-      <table class="table table-bordered">
+      <table class="table table-hover">
         <tr>
           <%= image_tag @user.get_profile_image(300, 300), class: "mb-3" %>
         </tr>
         <tr>
-          <td>アカウント名</td>
-          <td><%= @user.account_name %></td>
+          <td class="user_item">
+            アカウント名
+          </td>
+          <td class="user_detail">
+            <%= @user.account_name %>
+          </td>
         </tr>
         <tr>
-          <td>紹介文</td>
-          <td><%= @user.introduction %></td>
+          <td class="user_item">
+            紹介文
+          </td>
+          <td class="user_detail">
+            <% if @user.introduction.present? %>
+              <%= @user.introduction %>
+            <% else %>
+              <% if @user==current_user %>
+                紹介文を設定するとここに表示されます。
+              <% else %>
+                まだ紹介文は設定されていません。
+              <% end %>
+            <% end %>
+          </td>
         </tr>
         <% if @user == current_user %>
           <tr>
-            <td>メールアドレス</td>
-            <td><%= @user.email %></td>
+            <td class="user_item">
+              メールアドレス
+            </td>
+            <td class="user_detail">
+              <%= @user.email %>
+            </td>
           </tr>
         <% end %>
         <tr>
-          <td>会員ステータス</td>
-          <td>
+          <td class="user_item">
+            会員ステータス
+          </td>
+          <td class="user_detail">
             <% if @user.is_active == true %>
               <p class="text-secondary">退会</p>
             <% else %>

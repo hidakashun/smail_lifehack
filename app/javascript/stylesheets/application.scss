@@ -2,19 +2,20 @@
 
 
 
-body {
+body {//背景画像
 //url("../images/background_image.jpg")；の「../」は階層のこと
   background-image: url("../images/background_image.jpg");
   background-size: cover;
 }
 
-/* 画像のサイズを変更するクラス */
+
+/* トップ画像のサイズを変更するクラス */
 .image-size {
     width: 100%; /* 幅を710pxに設定 */
     height: 400px; /* 高さを400pxに設定 */
 }
 
-/*スライドショー*/
+/*トップ画像スライドショー*/
 
 .slider {
     visibility: hidden;
@@ -50,43 +51,6 @@ body {
   font-size: 30px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.custom.heart td .icon-container i.fas.fa-heart {
-  color: red; /* お気に入りページの場合の色 */
-}
-
 /* styles.css */
 .custom-select {
   background-color: #f2f2f2;
@@ -107,6 +71,20 @@ body {
 
 .lifehack-comments-index {
   font-size: 18px; /* テーブルセル内のテキストのフォントサイズ */
+}
+
+
+.user_item {
+  font-size: 23px; /* テーブルセル内のテキストのフォントサイズ */
+}
+
+.user_detail {
+  font-size: 18px; /* テーブルセル内のテキストのフォントサイズ */
+}
+
+
+.custom.heart td .icon-container i.fas.fa-heart {
+  color: red; /* 管理者ログイン時ユーザーのいいね一覧ページの場合のハートの色 */
 }
 
 /* ページネーションリンクにスタイルを適用 */

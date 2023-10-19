@@ -7,22 +7,28 @@
       </h3>
       <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
         <%= render 'layouts/error', obj: @user %>
-        <table class="table table-borderless">
+        <table class="table table-hover">
           <tr>
-            <td>アカウント名</td>
+            <td class="user_item">
+              アカウント名
+            </td>
             <td>
               <%= f.text_field :account_name, autofocus: true, placeholder: "アカウント名を入力してください。", class: "form-control name" %>
             </td>
           </tr>
           <tr>
-            <td>プロフィール画像</td>
+            <td class="user_item">
+              プロフィール画像
+            </td>
             <td>
               <%= image_tag @user.get_profile_image(200, 200) %><br>
               <%= f.file_field :profile_image, class: "mt-2 form-control-file user_image", accept: 'image/*' %>
             </td>
           </tr>
           <tr>
-            <td>紹介文</td>
+            <td class="user_item">
+              紹介文
+            </td>
             <td>
               <%= f.text_area :introduction, placeholder: "紹介文を書きましょう！", class: "form-control introduction" %>
             </td>
