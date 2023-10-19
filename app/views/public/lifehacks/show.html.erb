@@ -88,11 +88,7 @@
             コメント一覧
           </td>
           <td class="lifehack-comments-index"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
-          <% if @lifehack_comments.any? %>
             <%= render "public/lifehack_comments/index", lifehack_comments: @lifehack_comments %><!--コメント一覧、削除機能-->
-          <% else %>
-            コメントが送信されるとここに表示されます。
-          <% end %>
           </td>
         </tr>
       </table>
