@@ -21,7 +21,7 @@
     <h6 class="mt-4">現在この投稿には下記の画像が表示されています。</h6>
     <% if @lifehack.lifehack_images.attached? %>
       <% @lifehack.lifehack_images.each do |image| %>
-        <%= image_tag image.variant(resize: "300x300") %>
+        <%= image_tag image.variant(resize: "250x250") %>
       <% end %>
     <% else %>
       <%= image_tag 'no_lifehack_image.jpg' %>
