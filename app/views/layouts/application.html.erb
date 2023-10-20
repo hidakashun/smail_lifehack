@@ -8,11 +8,17 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/><!--スライドショー-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/><!--スライドショー-->
     <script src="https://kit.fontawesome.com/cdce8a28a2.js" crossorigin="anonymous"></script>
+    <%# ↓ここから %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@500&display=swap" rel="stylesheet">
+    <%# ↑ここまでGoogle Font導入 %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column h-100" style="color: #000000; background-color: #000000; font-family: 'M PLUS 2', sans-serif;">
+    <%# ↑の行のfont-familyでフォント名を指定 %>
     <%= render 'layouts/header' %>
     <main>
       <div class="d-flex justify-content-center py-2" style="background-color: #F3F781;" >
