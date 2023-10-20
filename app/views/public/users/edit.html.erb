@@ -37,7 +37,7 @@
             <td></td>
             <td>
               <% if @user == current_user %>
-                <%= f.submit "編集内容を保存", class:"btn btn-dark mr-5" %>
+                <%= f.submit "編集内容を保存", class:"btn btn-primary mr-5" %>
                 <%= link_to "退会する", confirm_users_path, class:"btn btn-danger ml-5" %>
               <% end %>
             </td>

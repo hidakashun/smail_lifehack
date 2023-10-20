@@ -15,7 +15,7 @@
       <div class="d-flex mb-3">
         <h4><b>登録情報</b></h4>
         <% if @user == current_user %>
-          <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-dark ml-3" %>
+          <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-success ml-3" %>
         <% end %>
       </div>
     </div>
@@ -71,9 +71,9 @@
     <div class="col-12">
       <div class="d-flex align-center">
         <h4><b>投稿履歴</b></h4>
-        <%= link_to "一覧を見る", index_user_user_path(@user), class: "btn btn-dark ml-2 mr-4 mb-4" %>
+        <%= link_to "一覧を見る", index_user_user_path(@user), class: "btn btn-outline-primary ml-2 mr-4 mb-4" %>
         <h4><b>いいね一覧</b></h4>
-        <%= link_to "一覧を見る", favorites_user_path(@user), class: "btn btn-dark ml-2 mb-4" %>
+        <%= link_to "一覧を見る", favorites_user_path(@user), class: "btn btn-outline-success ml-2 mb-4" %>
       </div>
     </div>
   </div>

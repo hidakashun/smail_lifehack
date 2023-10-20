@@ -103,7 +103,7 @@
     <div class="row justify-content-center py-4">
       <% if @lifehack.user == current_user %>
         <div class="col-4 offset-2">
-          <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4 edit_lifehack_#{@lifehack.id}" %>
+          <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-info px-4 edit_lifehack_#{@lifehack.id}" %>
         </div>
         <div class="col-4 offset-2">
           <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger px-4 destroy_lifehack_#{@lifehack.id}"  %>
