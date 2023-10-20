@@ -5,46 +5,44 @@
         <i class="fa-regular fa-user"></i>
         ユーザーページ
       </h3>
-      <div class="d-flex">
+      <div class="d-flex mb-3">
         <h4><b>登録情報</b></h4>
         <%= link_to "編集する", edit_admin_user_path(@user.id), class:"btn btn-dark ml-3" %>
       </div>
-      <br>
-      <table class="table table-hover">
-        <tr><%= image_tag @user.get_profile_image(300, 300), class:"mb-3"%></tr>
-        <tr>
-          <td class="user_item">
-            アカウント名
-          </td>
-          <td class="user_detail">
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag @user.get_profile_image(300, 300), class: "mb-3", width: 300, height: 300 %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">
             <%= @user.account_name %>
-          </td>
-        </tr>
-        <tr>
-          <td class="user_item">
+          </h4>
+          <h5 class="mt-5">
             紹介文
-          </td>
-          <td class="user_detail">
+          </h5>
+          <p class="card-text">
             <% if @user.introduction.present? %>
               <%= @user.introduction %>
             <% else %>
               紹介文が設定されるとここに表示されます。
             <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td class="user_item">
-            会員ステータス
-          </td>
-          <td class="user_detail">
+          </p>
+          <h6 class="card-text d-flex w-100 mt-5">
+            <p class="mr-3">
+              会員ステータス
+            </p>
             <% if @user.is_active == true %>
               <p class="text-secondary">退会</p>
             <% else %>
               <p class="text-success">有効</p>
             <% end %>
-          </td>
-        </tr>
-      </table>
+          </h6>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
