@@ -58,26 +58,13 @@ a:hover {
   text-decoration: none; /* リンクにカーソルが乗った時下線を表示させない */
 }
 
+.user_list:hover {
+  background-color: #F2F5A9; /* カーソルが上にあるときの背景色 */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.lifehack_list:hover {
+  background-color: #F2F5A9; /* カーソルが上にあるときの背景色 */
+}
 
 /* キーワード検索ドロップダウンメニュー */
 .custom-select {

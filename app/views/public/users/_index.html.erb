@@ -1,14 +1,14 @@
 <% users.each do |user| %>
   <div class="list-group">
     <%= link_to user_path(user.id) do %>
-      <div class="list-group-item list-group-item-action d-flex">
+      <div class="list-group-item list-group-item-action d-flex user_list">
         <%= image_tag user.get_profile_image(100, 100), class: "mr-3" %>
         <div class="d-flex justify-content-between flex-grow-1">
-          <div class=" text-center mx-auto mt-5">
+          <div class="text-center mx-auto mt-5">
             ユーザー名<br>
             <%= user.account_name %>
           </div>
-          <div class=" text-center mx-auto mt-5">
+          <div class="text-center mx-auto mt-5">
             ステータス
             <% if user.is_active == true %>
               <p class="text-secondary">退会</p>
