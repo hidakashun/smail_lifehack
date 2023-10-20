@@ -15,11 +15,11 @@
     </div>
     <div class="card-body">
       <div class="d-flex justify-content-between">
-        <h4 class="card-title col-3 text-center">
+        <h4 class="card-title col-7">
           <%= image_tag 'miniature light bulb.png', size: "50x50" %>
           <%= @lifehack.title %>
         </h4>
-        <p class="col-8 offset-1 text-center">
+        <p class="col-5 text-center">
           <small>
             投稿日<%= @lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
             （更新日<%= @lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->

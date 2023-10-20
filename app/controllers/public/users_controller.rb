@@ -13,12 +13,16 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.update(user_params)
-      flash[:notice] = "ユーザー情報を更新しました。"
-      redirect_to user_path
+    if current_user.email == 'guest@example.com'# メールアドレスで機能を分けてる
+      redirect_to root_path, notice: "ゲストユーザーの登録情報は変更できません。"
     else
-      render :edit
+      @user = current_user
+      if @user.update(user_params)
+        flash[:notice] = "ユーザー情報を更新しました。"
+        redirect_to user_path
+      else
+        render :edit
+      end
     end
   end
 
