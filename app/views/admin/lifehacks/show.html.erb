@@ -3,93 +3,85 @@
     <i class="fa-regular fa-file"></i>
     投稿詳細
   </h3>
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <table class="table table-hover text-center">
-        <tr>
-          <td class="lifehack_item">
-            タイトル
-          </td>
-          <td class="lifehack_detail">
-            <%= @lifehack.title %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            本文
-          </td>
-          <td class="lifehack_detail">
-            <%= simple_format(@lifehack.body) %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
+  <div class="card">
+    <div class="d-flex justify-content-center">
+      <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
+        <% @lifehack.lifehack_images.each do |image| %>
+          <%= image_tag image.variant(resize: "330x330") %>
+        <% end %>
+      <% else %><!--画像追加がされなかったとき-->
+        <%= image_tag 'no_lifehack_image.jpg' %>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h4 class="card-title col-3 text-center">
+          <%= @lifehack.title %>
+        </h4>
+        <small>
+          投稿日<%= @lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+          （更新日<%= @lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
+        </small>
+      </div>
+      <p class="card-text">
+        <%= simple_format(@lifehack.body) %>
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
             おすすめ度
-          </td>
-          <td>
+          </h4>
+          <p>
             <%= render "public/lifehacks/static.rate", lifehack: @lifehack %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
+          </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
             タグ
-          </td>
-          <td class="lifehack_detail">
+          </h4>
+          <p>
             <%= link_to @lifehack.tag, tagsearches_search_path(tagcontent: @lifehack.tag) %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            画像解説
-          </td>
-          <td>
-            <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
-              <% @lifehack.lifehack_images.each do |image| %>
-                <%= image_tag image.variant(resize: "200x200") %>
-              <% end %>
-            <% else %><!--画像追加がされなかったとき-->
-              <%= image_tag 'no_lifehack_image.jpg' %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            投稿日
-          </td>
-          <td class="lifehack_detail">
-            <%= @lifehack.created_at.strftime('%Y/%m/%d') %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
+          </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
             いいね数
-          </td>
-          <td class="lifehack_detail">
+          </h4>
+          <p>
             <i class="fas fa-heart" aria-hidden="true"></i>
             <%= @lifehack.favorites.count %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            コメント数
-          </td>
-          <td class="lifehack-comments-counter"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
-            <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
+          </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
+            コメント件数
+          </h4>
+            <p class="lifehack-comments-counter"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+              <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
+            </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex">
+          <h4 class="card-title col-3 text-center">
             コメント一覧
-          </td>
-          <td class="lifehack-comments-index"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+          </h4>
+            <p class="lifehack-comments-index"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
             <%= render "public/lifehack_comments/index", lifehack_comments: @lifehack_comments %><!--コメント一覧、削除-->
           </td>
-        </tr>
-      </table>
-    </div>
-  </div>
+        </div>
+      </li>
+    </ul>
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-5">
       <%= link_to '管理者権限により投稿を削除する', admin_lifehack_path(@lifehack), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger destroy_lifehack_#{@lifehack.id} mb-4"  %>
     </div>
   </div>

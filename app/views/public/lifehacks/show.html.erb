@@ -3,96 +3,91 @@
     <i class="fa-regular fa-file"></i>
     投稿詳細
   </h3>
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <table class="table table-hover text-center">
-        <tr>
-          <td class="lifehack_item">
-            タイトル
-          </td>
-          <td class="lifehack_detail">
-            <%= @lifehack.title %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            本文
-          </td>
-          <td class="lifehack_detail">
-            <%= simple_format(@lifehack.body) %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            おすすめ度
-          </td>
-          <td>
-            <%= render "static.rate", lifehack: @lifehack %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            タグ
-            </td>
-          <td class="lifehack_detail">
-            <%= link_to @lifehack.tag, tagsearches_search_path(tagcontent: @lifehack.tag) %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            画像解説
-          </td>
-          <td>
-            <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
-              <% @lifehack.lifehack_images.each do |image| %>
-                <%= image_tag image.variant(resize: "200x200") %>
-              <% end %>
-            <% else %>
-              <%= image_tag 'no_lifehack_image.jpg' %><!--画像追加がされなかったとき-->
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            投稿日
-          </td>
-          <td class="lifehack_detail">
-            <%= @lifehack.created_at.strftime('%Y/%m/%d') %>
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            いいね数
-          </td>
-          <% if user_signed_in? %>
-          <td class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
-            <%= render "public/favorites/btn", lifehack: @lifehack %>
-          </td>
-          <% else %>
-          <td>
-            <i class="fas fa-heart" aria-hidden="true"></i>
-            <%= @lifehack.favorites.count %>
-          </td>
-          <% end %>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            コメント件数
-          </td>
-          <td class="lifehack-comments-counter"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
-            <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
-          </td>
-        </tr>
-        <tr>
-          <td class="lifehack_item">
-            コメント一覧
-          </td>
-          <td class="lifehack-comments-index"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
-            <%= render "public/lifehack_comments/index", lifehack_comments: @lifehack_comments %><!--コメント一覧、削除機能-->
-          </td>
-        </tr>
-      </table>
+  <div class="card">
+    <div class="d-flex justify-content-center">
+      <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
+        <% @lifehack.lifehack_images.each do |image| %>
+          <%= image_tag image.variant(resize: "330x330") %>
+        <% end %>
+      <% else %>
+        <%= image_tag 'no_lifehack_image.jpg' %><!--画像追加がされなかったとき-->
+      <% end %>
     </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h4 class="card-title col-3 text-center">
+          <%= @lifehack.title %>
+        </h4>
+        <small>
+          投稿日<%= @lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+          （更新日<%= @lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
+        </small>
+      </div>
+      <p class="card-text">
+        <%= simple_format(@lifehack.body) %>
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
+            おすすめ度
+          </h4>
+          <p>
+            <%= render "static.rate", lifehack: @lifehack %>
+          </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
+            タグ
+          </h4>
+          <p>
+            <%= link_to @lifehack.tag, tagsearches_search_path(tagcontent: @lifehack.tag) %>
+          </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
+            いいね数
+          </h4>
+          <p>
+            <% if user_signed_in? %>
+            <p class=<%= "favorite-" + @lifehack.id.to_s %> ><!--いいねボタン非同期通信-->
+              <%= render "public/favorites/btn", lifehack: @lifehack %>
+            </p>
+            <% else %>
+            <p>
+              <i class="fas fa-heart" aria-hidden="true"></i>
+              <%= @lifehack.favorites.count %>
+            </p>
+            <% end %>
+          </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
+            コメント件数
+          </h4>
+            <p class="lifehack-comments-counter"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+              <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
+            </p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex">
+          <h4 class="card-title col-3 text-center">
+            コメント一覧
+          </h4>
+            <p class="lifehack-comments-index col-9 text-center"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+              <%= render "public/lifehack_comments/index", lifehack_comments: @lifehack_comments %><!--コメント一覧、削除機能-->
+            </p>
+        </div>
+      </li>
+    </ul>
     <div class="col-12">
       <% if user_signed_in? %>
         <div><!--create.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
@@ -100,16 +95,15 @@
         </div>
       <% end %>
     </div>
-  </div>
-
-  <div class="row justify-content-center py-4">
-    <% if @lifehack.user == current_user %>
-      <div class="col-4 offset-2">
-        <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4 edit_lifehack_#{@lifehack.id}" %>
-      </div>
-      <div class="col-4 offset-2">
-        <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger px-4 destroy_lifehack_#{@lifehack.id}"  %>
-      </div>
-    <% end %>
+    <div class="row justify-content-center py-4">
+      <% if @lifehack.user == current_user %>
+        <div class="col-4 offset-2">
+          <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-dark px-4 edit_lifehack_#{@lifehack.id}" %>
+        </div>
+        <div class="col-4 offset-2">
+          <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger px-4 destroy_lifehack_#{@lifehack.id}"  %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
