@@ -1,36 +1,43 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>投稿日</th>
-      <th>ライフハック</th>
-      <th>おすすめ度</th>
-      <th>タグ</th>
-      <th>いいね</th>
-      <th>コメント数</th>
-      <th>投稿ユーザー</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% lifehacks.each do |lifehack| %>
-      <tr>
-        <td><%= lifehack.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= link_to lifehack.title, admin_lifehack_path(lifehack), class: "text-reset" %></td>
-        <td><%= render "public/lifehacks/static.rate", lifehack: lifehack %></td>
-        <td><%= link_to lifehack.tag, tagsearches_search_path(tagcontent: lifehack.tag) %></td>
-        <td>
-          <div class="icon-container">
-            <i class="fas fa-heart" aria-hidden="true"></i>
-            <%= lifehack.favorites.count %>
+<% lifehacks.each do |lifehack| %>
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h4 class="mb-1"><%= link_to lifehack.title, admin_lifehack_path(lifehack), class: "text-reset" %></h4><!--タイトル-->
+        <small>
+            投稿日<%= lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+            （更新日<%= lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
+        </small>
+      </div>
+        <p class="mb-1">
+          <%= link_to lifehack.body, lifehack, class: "text-reset " %><!--本文-->
+        </p>
+        <div class="d-flex w-100 justify-content-between">
+        <p class="mb-1">
+          タグ検索ワード<br>
+          <%= link_to lifehack.tag, tagsearches_search_path(tagcontent: lifehack.tag) %><!--タグ-->
+        </p>
+          <div class="d-flex justify-content-end">
+            <div class="mx-3 mt-4">
+              <div class="icon-container">
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                <%= lifehack.favorites.count %><!--いいね-->
+              </div>
           </div>
-        </td>
-        <td>コメント数: <%= lifehack.lifehack_comments.count %></td>
-        <td>
+          <div class="mx-3 mt-4">
+            <%= render "public/lifehacks/static.rate", lifehack: lifehack %><!--おすすめ度-->
+          </div>
+          <div class="mx-3 mt-4">
+            <%= render "public/lifehack_comments/counter", lifehack: lifehack %><!--コメント数-->
+          </div>
+        </div>
+      </div>
+      <small>
+        （投稿者）
           <%= link_to admin_user_path(lifehack.user) do %>
-            <%= image_tag lifehack.user.get_profile_image(50, 50) %>
+            <%= image_tag lifehack.user.get_profile_image(50, 50) %><!--投稿者詳細-->
             <%= lifehack.user.account_name %>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </small>
+    </div>
+  </div>
+<% end %>
