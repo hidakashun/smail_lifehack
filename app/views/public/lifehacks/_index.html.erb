@@ -2,7 +2,10 @@
   <div class="list-group">
     <div class="list-group-item list-group-item-action lifehack_list" aria-current="true" >
       <div class="d-flex w-100 justify-content-between">
-        <h4 class="mb-1"><%= link_to lifehack.title, lifehack, class: "text-reset" %></h4><!--タイトル-->
+        <h4 class="mb-1">
+          <%= image_tag 'miniature light bulb.png', size: "50x50" %>
+          <%= link_to lifehack.title, lifehack, class: "text-reset" %>
+        </h4><!--タイトル-->
         <small>
             投稿日<%= lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
             （更新日<%= lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
