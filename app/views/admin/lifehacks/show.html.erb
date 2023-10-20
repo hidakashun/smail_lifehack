@@ -18,24 +18,29 @@
         <h4 class="card-title col-3 text-center">
           <%= @lifehack.title %>
         </h4>
-        <small>
-          投稿日<%= @lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
-          （更新日<%= @lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
-        </small>
+        <p class="col-8 offset-1 text-center">
+          <small>
+            投稿日<%= @lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+            （更新日<%= @lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
+          </small>
+        </p>
       </div>
-      <p class="card-text">
-        <%= simple_format(@lifehack.body) %>
-      </p>
+      <div class="col-12">
+        <p class="card-text">
+          <%= simple_format(@lifehack.body) %>
+        </p>
+      </div>
     </div>
+
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class="d-flex justify-content-between">
           <h4 class="card-title col-3 text-center">
             おすすめ度
           </h4>
-          <p>
+          <div class="col-9 text-center">
             <%= render "public/lifehacks/static.rate", lifehack: @lifehack %>
-          </p>
+          </div>
         </div>
       </li>
       <li class="list-group-item">
@@ -43,9 +48,9 @@
           <h4 class="card-title col-3 text-center">
             タグ
           </h4>
-          <p>
+          <div class="col-9 text-center">
             <%= link_to @lifehack.tag, tagsearches_search_path(tagcontent: @lifehack.tag) %>
-          </p>
+          </div>
         </div>
       </li>
       <li class="list-group-item">
@@ -53,10 +58,10 @@
           <h4 class="card-title col-3 text-center">
             いいね数
           </h4>
-          <p>
+          <div class="col-9 text-center">
             <i class="fas fa-heart" aria-hidden="true"></i>
             <%= @lifehack.favorites.count %>
-          </p>
+          </div>
         </div>
       </li>
       <li class="list-group-item">
@@ -64,9 +69,9 @@
           <h4 class="card-title col-3 text-center">
             コメント件数
           </h4>
-            <p class="lifehack-comments-counter"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+            <div class="lifehack-comments-counter col-9 text-center"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
               <%= render "public/lifehack_comments/counter", lifehack: @lifehack %><!--コメント数-->
-            </p>
+            </div>
         </div>
       </li>
       <li class="list-group-item">
@@ -74,9 +79,9 @@
           <h4 class="card-title col-3 text-center">
             コメント一覧
           </h4>
-            <p class="lifehack-comments-index"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+            <div class="lifehack-comments-index col-9 text-center"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
             <%= render "public/lifehack_comments/index", lifehack_comments: @lifehack_comments %><!--コメント一覧、削除-->
-          </td>
+          </div>
         </div>
       </li>
     </ul>
