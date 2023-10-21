@@ -12,6 +12,7 @@
       account_name: "テストユーザー#{n + 1}",
       is_active: "false",
       email: "test#{n + 1}@test.com",
+      introduction: "私はテストユーザー#{n + 1}といいます。よろしくお願いします。",
       password: "000000"
     )
   end
@@ -73,7 +74,7 @@ User.all.each do |user|
   user.lifehacks.each do |lifehack|
 
   #いいね数をランダムで作成
-    rand(1..15).times do
+    rand(1..15).times do# 1から15までのランダムなユーザーがいいね数を設定
       Favorite.create(user: User.all.sample, lifehack: lifehack)
     end
   end
@@ -83,7 +84,7 @@ User.all.each do |user|
     LifehackComment.create(
       user: user,
       lifehack: lifehack,
-      comment: "これは素晴らしいライフハックですね！"#コメントが表示されないカウントは表示される。
+      comment: "これは素晴らしいライフハックですね！"
     )
   end
 
@@ -96,7 +97,7 @@ User.all.each do |user|
   # ここで画像をアップロードして関連付ける
   lifehack1 = user.lifehacks.last#ユーザーの最新の投稿
   lifehack2 = user.lifehacks[-2]#ユーザーの最新のひとつ前の投稿
-  lifehack3 = user.lifehacks[-3]#ユーザーの最新のひとつ前の投稿
+  lifehack3 = user.lifehacks[-3]#ユーザーの最新のふたつ前の投稿
 
   # 画像を複数アップロードする場合、同様のコードを繰り返し使用
   lifehack1.lifehack_images.attach(io: File.open('app/assets/images/mandarin orange.jpg'), filename: 'mandarin orange.jpg')
