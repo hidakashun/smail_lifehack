@@ -21,9 +21,13 @@
     <%# ↑の行のfont-familyでフォント名を指定 %>
     <%= render 'layouts/header' %>
     <main>
-      <div class="d-flex justify-content-center py-2" style="background-color: #F3F781;" >
-        <%= render 'public/searches/form' %><!--キーワード検索機能-->
-        <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
+      <div class="row d-flex justify-content-between py-2 mx-auto" style="background-color: #F3F781;">
+        <div class="col-sm-8">
+          <%= render 'public/searches/form' %><!--キーワード検索機能-->
+        </div>
+        <div class="col-sm-4">
+          <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
+        </div>
       </div>
       <div class="container flex-shrink-0">
         <%= flash[:notice] %>
