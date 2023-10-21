@@ -54,6 +54,21 @@
           </div>
         </div>
       </li>
+
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title col-3 text-center">
+            投稿者
+          </h4>
+          <div class="col-9 text-center">
+            <%= link_to admin_user_path(@lifehack.user) do %>
+              <%= image_tag @lifehack.user.get_profile_image(50, 50) %><!--投稿者詳細-->
+              <%= @lifehack.user.account_name %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+
       <li class="list-group-item">
         <div class="d-flex justify-content-between">
           <h4 class="card-title col-3 text-center">
