@@ -24,7 +24,9 @@ class Admin::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    favorite_ids = Favorite.where(user_id: @user.id).pluck(:lifehack_id)
+    favorite_ids = Favorite.where(user_id: @user.id)
+                           .order(created_at: :desc) # いいねの日時で降順にソート
+                           .pluck(:lifehack_id)
     @favorite_lifehacks = Lifehack.where(id: favorite_ids)
                                   .page(params[:page]).per(10)
                                   .order(created_at: :desc)
