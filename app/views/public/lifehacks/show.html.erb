@@ -103,9 +103,9 @@
           <h4 class="card-title col-3 text-center">
             コメント一覧
           </h4>
-            <p class="lifehack-comments-index col-9 text-center"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
+            <div class="lifehack-comments-index col-9 text-center"><!--create.js.erbとdestroy.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
               <%= render "public/lifehack_comments/index", lifehack_comments: @lifehack_comments %><!--コメント一覧、削除機能-->
-            </p>
+            </div>
         </div>
       </li>
     </ul>
