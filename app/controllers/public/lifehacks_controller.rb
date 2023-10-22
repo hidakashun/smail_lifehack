@@ -62,7 +62,6 @@ class Public::LifehacksController < ApplicationController
     elsif params[:update_post]
        @lifehack.attributes = lifehack_params
       if @lifehack.save(context: :publicize)
-      #if @lifehack.update(lifehack_params)
         redirect_to lifehack_path(@lifehack), notice: "投稿内容を更新しました。"
       else
         render :edit,alert: "更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
@@ -70,7 +69,7 @@ class Public::LifehacksController < ApplicationController
     # 下書きライフハックの更新（非公開）の場合
     else
       if @lifehack.update(lifehack_params)
-        redirect_to lifehack_path(@lifehack), notice: "下書きライフハックを更新しました！"
+        redirect_to lifehack_path(@lifehack), notice: "下書きのライフハックを更新しました！"
       else
         render :edit, alert: "更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
