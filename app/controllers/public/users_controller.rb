@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+    before_action :authenticate_user!, only: [:favorites, :index_user]
+
   def show
     @user = User.find(params[:id])
   end
@@ -27,6 +29,7 @@ class Public::UsersController < ApplicationController
   end
 
   def confirm
+    @user = current_user
   end
 
   def withdraw

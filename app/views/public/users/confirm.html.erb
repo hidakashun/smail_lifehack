@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-12 text-center mt-5 mb-4">
-      <%= link_to "退会しない", users_path, :class => "btn btn-info mr-5" %>
+      <%= link_to "退会しない", user_path(@user), :class => "btn btn-info mr-5" %>
       <%= link_to "退会する", withdraw_users_path, method: :patch, :class => "btn btn-danger ml-5", data: { confirm: "本当に退会しますか？" }  %>
     </div>
   </div>
