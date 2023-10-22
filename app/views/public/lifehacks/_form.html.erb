@@ -78,23 +78,23 @@
 
   <div class="row">
     <% if lifehack.id.nil? %>
-      <div class="col-2">
-        <%= f.submit '新規投稿', :name => 'post', class: "btn btn-primary px-4 mb-4" %>
+      <div class="col-12 col-md-2 mb-2">
+        <%= f.submit '新規投稿', :name => 'post', class: "btn btn-primary px-4" %>
       </div>
-      <div class="col-10">
-        <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-success px-4 mb-4" %>
+      <div class="col-12 col-md-10 mb-2">
+        <%= f.submit '下書きに保存', :name => 'draft', class: "btn btn-success px-4" %>
       </div>
     <% else %>
       <% if lifehack.is_draft == true %>
-        <div class="col-3">
-          <%= f.submit "ライフハックを公開", :name => 'publicize_draft', class: 'btn btn-warning' %>
+        <div class="col-12 col-md-3 mb-2">
+          <%= f.submit "ライフハックを公開", :name => 'publicize_draft', class: 'btn btn-warning px-4' %>
         </div>
-        <div class="col-9">
-          <%= f.submit "下書きを更新", :name => 'update_draft', class: 'btn btn-outline-secondary' %>
+        <div class="col-12 col-md-9 mb-2">
+          <%= f.submit "下書きを更新", :name => 'update_draft', class: 'btn btn-outline-secondary px-4' %>
         </div>
       <% else %>
-        <div class="col-2">
-          <%= f.submit '変更を保存', :name => 'update_post', class: "btn btn-primary px-4 mb-4" %>
+        <div class="col-12 col-md-2 mb-2">
+          <%= f.submit '変更を保存', :name => 'update_post', class: "btn btn-primary px-4" %>
         </div>
       <% end %>
     </div>

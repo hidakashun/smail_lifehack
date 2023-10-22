@@ -4,13 +4,13 @@
     投稿詳細
   </h3>
   <div class="card">
-    <div class="d-flex justify-content-center mt-5">
+    <div class="lifehack_images justify-content-center mt-5">
       <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
         <% @lifehack.lifehack_images.each do |image| %>
           <%= image_tag image.variant(resize: "330x330") %>
         <% end %>
-      <% else %>
-        <%= image_tag 'no_lifehack_image.jpg' %><!--画像追加がされなかったとき-->
+      <% else %><!--画像追加がされなかったとき-->
+        <%= image_tag 'no_lifehack_image.jpg' %>
       <% end %>
     </div>
     <div class="card-body">
@@ -118,13 +118,14 @@
     </div>
     <div class="row justify-content-center py-4">
       <% if @lifehack.user == current_user %>
-        <div class="col-4 offset-2">
-          <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-info px-4 edit_lifehack_#{@lifehack.id}" %>
+        <div class="col-6 col-md-3 mb-2">
+          <%= link_to '編集する', edit_lifehack_path(@lifehack), class: "btn btn-info btn-block edit_lifehack_#{@lifehack.id}" %>
         </div>
-        <div class="col-4 offset-2">
-          <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger px-4 destroy_lifehack_#{@lifehack.id}"  %>
+        <div class="col-6 col-md-3 mb-2">
+          <%= link_to '削除する', @lifehack, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-block destroy_lifehack_#{@lifehack.id}"  %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+

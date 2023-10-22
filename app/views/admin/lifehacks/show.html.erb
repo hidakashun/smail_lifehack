@@ -4,7 +4,7 @@
     投稿詳細
   </h3>
   <div class="card">
-    <div class="d-flex justify-content-center mt-5">
+    <div class="lifehack_images justify-content-center mt-5">
       <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
         <% @lifehack.lifehack_images.each do |image| %>
           <%= image_tag image.variant(resize: "330x330") %>
