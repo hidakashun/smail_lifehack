@@ -1,7 +1,12 @@
 <div class="container py-1">
   <h3 class="mt-3">
-    <i class="fa-regular fa-file"></i>
-    投稿詳細
+    <% if @lifehack.is_draft %>
+      <i class="fa-solid fa-pencil"></i>
+      下書き投稿詳細
+    <% else %>
+      <i class="fa-regular fa-file"></i>
+      投稿詳細
+    <% end %>
   </h3>
   <div class="card">
     <div class="lifehack_images justify-content-center mt-5">
