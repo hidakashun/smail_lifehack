@@ -19,6 +19,8 @@ class Lifehack < ApplicationRecord
     validates :tag
   end
 
+  validates :is_draft, inclusion: { in: [true, false] }#下書き有無
+
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }#タイトル最小2文字、最大20文字
   validates :body,presence:true,length:{ minimum: 10,maximum:200}#本文最小10文字、最大200文字
   validates :tag, length: { minimum: 2, maximum: 20 }#タグ設定最小2文字、最大20文字
