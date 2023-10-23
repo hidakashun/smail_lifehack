@@ -7,30 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create!(
-  [
-    {
-      account_name: "テスト21",
-      is_active: "true",
-      email: 'test21@test.com',
-      password: '000000'
-    },
-    {
-      account_name: "テスト22",
-      is_active: "true",
-      email: 'test22@test.com',
-      password: '000000'
-    },
-    {
-      account_name: "テスト23",
-      is_active: "true",
-      email: 'test23@test.com',
-      password: '000000',
-    }
-  ]
-)
+#user21~23のデータ
+user_data = [
+  { email: ENV['USER_EMAIL21'], account_name: "テスト21", is_active: true, password: ENV['USER_PASSWORD21'] },
+  { email: ENV['USER_EMAIL22'], account_name: "テスト22", is_active: true, password: ENV['USER_PASSWORD22'] },
+  { email: ENV['USER_EMAIL23'], account_name: "テスト23", is_active: true, password: ENV['USER_PASSWORD23'] }
+]
 
-Admin.create!(
-  email: 'testc@testc.com',
-  password: '111111'
-)
+user_data.each do |data|
+  User.find_or_create_by!(email: data[:email]) do |user|
+    user.account_name = data[:account_name]
+    user.is_active = data[:is_active]
+    user.password = data[:password]
+  end
+end
+
+#adminのデータ
+Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
+  admin.password = ENV['ADMIN_PASSWORD']
+end
