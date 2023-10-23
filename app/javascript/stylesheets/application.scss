@@ -9,12 +9,25 @@ body {//背景画像
 }
 
 /*↓ここからヘッダー*/
+.header {/*ヘッダー背景色*/
+  background-color: #F5F6CE
+}
 .nav-link {/*ヘッダーグローバルナビ*/
   margin-top: 0.25rem;
-  margin-right: 1rem;
 }
 .guest_btn {/*ヘッダーゲストボタン幅*/
   width: 10em;
+}
+.nav-item { /* アイコンとリンクのあいだの余白 */
+  margin-left: 0.5rem;
+}
+.nav-item:hover { /* カーソルが上にあるときの背景色 */
+  background-color: #F3F781;
+  border-radius: 15px; /* 角を丸くする */
+}
+.guest_btn { /* ゲストログインボタン */
+  background-color: #58FAF4;
+  color: #495057;
 }
 /*↑ここまでヘッダー*/
 
@@ -71,6 +84,21 @@ body {//背景画像
   color: #495057; /* 文字色をグレーに変更 */
 }
 /*↑ここまでトップ画像のテキスト*/
+
+.lifehack_listall:hover { /* 「すべての投稿を見る」のカーソルが上にあるときの背景色 */
+  padding: 7px;
+  background-color: #93c9ff; /* マウスオーバー時の背景色 */
+  color: #fff; /* テキストの色を変更 */
+  border-radius: 15px; /* 角を丸くする */
+}
+
+.login_text:hover { /* 新規登録、ユーザーログインの「こちら」の上にカーソルがあるときの背景色 */
+  padding: 7px;
+  background-color: #93c9ff; /* マウスオーバー時の背景色 */
+  color: #fff; /* テキストの色を変更 */
+  border-radius: 15px; /* 角を丸くする */
+}
+
 
 /* ↓ここから投稿画像のレスポンシブ */
 .lifehack_images {
@@ -135,14 +163,14 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 }
 /* アクティブなページへのスタイル */
 .pagination .active a {
-  background: #93c9ff; /* アクティブなページの背景色を変更 */
+  background-color: #93c9ff; /* アクティブなページの背景色を変更 */
   color: #fff; /* テキストの色を変更 */
 }
 /* 現在のページ番号の背景色を変更 */
 .pagination .page.current {
   background-color: #93c9ff; /* 好きな背景色に変更 */
   color: #fff; /* テキストの色を変更（背景に合わせたり） */
-  border-radius: 15px; /* 角を丸くするなど、必要に応じてスタイルを調整 */
+  border-radius: 15px; /* 角を丸くする */
   padding: 2px 5px;
 }
 /* ↑ここまでページネーションリンクにスタイルを適用 */

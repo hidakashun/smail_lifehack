@@ -4,7 +4,7 @@
       <div class="tagsearch_form">
         <%= form_with(url: search_path, method: :get, local: true) do |f| %>
           <td>
-            <%= f.text_field :keyword_content, id: "field1", size: "30", placeholder: "キーワードを入力してください。", class: "form-control" %>
+            <%= f.text_field :keyword_content, size: "30", placeholder: "キーワードを入力してください。", class: "form-control" %>
           </td>
           <td>
             <%= f.select :model, options_for_select({ "投稿者" => "user", "ライフハック" => "lifehack" }), {}, class: "custom-select" %>

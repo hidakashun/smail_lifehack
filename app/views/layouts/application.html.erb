@@ -22,14 +22,7 @@
     <%# ↑の行のfont-familyでフォント名を指定 %>
     <%= render 'layouts/header' %>
     <main>
-      <div class="row d-flex justify-content-between py-2 mx-auto" style="background-color: #F5F6CE;">
-        <div class="col-sm-8">
-          <%= render 'public/searches/form' %><!--キーワード検索機能-->
-        </div>
-        <div class="col-sm-4">
-          <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
-        </div>
-      </div>
+
       <div class="container flex-shrink-0">
         <%= flash[:notice] %>
         <%= flash[:alert] %>
@@ -49,7 +42,7 @@
         //スライドショーの自動再生(カーソルが画像の上に乗るとスライドショーが止まる)
         autoplay: true,
         //自動再生のスピード(1000→1秒、3000→3秒)
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         });
       });
     </script>

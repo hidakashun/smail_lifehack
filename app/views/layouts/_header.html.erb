@@ -1,5 +1,5 @@
-<header>
-  <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #F5F6CE">
+<header class="header">
+  <nav class="navbar navbar-expand-sm navbar-light">
     <div class="container">
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag 'icon.png', size: "150x100" %>
@@ -12,7 +12,7 @@
         <% end %>
       </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <button class="navbar-toggler" type="button1" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -79,8 +79,16 @@
     </div>
     <div>
       <% unless user_signed_in? || admin_signed_in? %>
-        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "guest_btn nav-link btn btn-dark" %>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "guest_btn btn" %>
       <% end %>
     </div>
   </nav>
+  <div class="row d-flex justify-content-between py-2 mx-auto">
+    <div class="col-sm-8">
+      <%= render 'public/searches/form' %><!--キーワード検索機能-->
+    </div>
+    <div class="col-sm-4">
+      <%= render 'public/tagsearches/form' %><!--タグ検索機能-->
+    </div>
+  </div>
 </header>
