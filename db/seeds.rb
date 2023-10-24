@@ -94,15 +94,15 @@ User.all.each do |user|
   lifehack3 = user.lifehacks[-3]#ユーザーの最新のふたつ前の投稿
 
   # 画像を複数アップロードする場合、同様のコードを繰り返し使用
-  lifehack1.lifehack_images.attach(io: File.open('app/assets/images/mandarin orange.jpg'), filename: 'mandarin orange.jpg')
-  lifehack1.lifehack_images.attach(io: File.open('app/assets/images/faucet1.jpg'), filename: 'faucet1.jpg')
-  lifehack1.lifehack_images.attach(io: File.open('app/assets/images/faucet2.jpg'), filename: 'faucet2.jpg')
+  lifehack1.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/mandarin orange.jpg"), filename:"mandarin orange.jpg")
+  lifehack1.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/faucet1.jpg"), filename:"faucet1.jpg")
+  lifehack1.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/faucet2.jpg"), filename:"faucet2.jpg")
 
   # 画像を複数アップロードする場合、同様のコードを繰り返し使用
-  lifehack2.lifehack_images.attach(io: File.open('app/assets/images/Rappu pack1.jpg'), filename: 'Rappu pack1.jpg')
-  lifehack2.lifehack_images.attach(io: File.open('app/assets/images/Rappu pack2.jpg'), filename: 'Rappu pack2.jpg')
-  lifehack2.lifehack_images.attach(io: File.open('app/assets/images/Rappu pack3.jpg'), filename: 'Rappu pack3.jpg')
+  lifehack2.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/Rappu pack1.jpg"), filename:"Rappu pack1.jpg")
+  lifehack2.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/Rappu pack2.jpg"), filename:"Rappu pack1.jpg")
+  lifehack2.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/Rappu pack3.jpg"), filename:"Rappu pack3.jpg")
 
   # 画像を複数アップロードする場合、同様のコードを繰り返し使用
-  lifehack3.lifehack_images.attach(io: File.open('app/assets/images/air conditioner.jpg'), filename: 'air conditioner.jpg')
+  lifehack3.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/air conditioner.jpg"), filename:"air conditioner.jpg")
 end
