@@ -5,13 +5,28 @@
 body {//背景画像
 //url("../images/background_image.jpg")；の「../」は階層のこと
   background-image: url("../images/background_image.jpg");
+  background-position: center;
   background-size: cover;
+  padding-top: 230px; /* ヘッダーと被るため余白を設定 */
 }
 
 /*↓ここからヘッダー*/
-.header {/*ヘッダー背景色*/
-  background-color: #F5F6CE
+.header {
+  background-color: #F5F6CE;
+  position: fixed; /* ヘッダーを固定 */
+  width: 100%; /* ヘッダーを横幅いっぱいに広げる */
+  top: 0; /* ページ上端に固定 */
+  z-index: 100; /* 他の要素より手前に表示 */
 }
+
+.button {
+  position: absolute; /* 要素を絶対位置に配置 */
+  top: 0; /* 上端からの距離を0に設定 */
+  right: 0; /* 右端からの距離を0に設定 */
+  margin: 20px; /* マージンを追加して位置を微調整（必要に応じて調整） */
+  z-index: 200; /* 必要に応じてz-indexを設定して他の要素より上に表示 */
+}
+
 .nav-link {/*ヘッダーグローバルナビ*/
   margin-top: 0.25rem;
 }

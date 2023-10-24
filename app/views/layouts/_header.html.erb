@@ -1,9 +1,19 @@
 <header class="header">
   <nav class="navbar navbar-expand-sm navbar-light">
     <div class="container">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'icon.png', size: "150x100" %>
-      <% end %>
+      <div class="d-flex">
+        <!-- ロゴ -->
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag 'icon.png', size: "150x100" %>
+        <% end %>
+        
+        <!-- ハンバーガーメニュー -->
+        <div class="button">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
 
       <div class="col-sm-3 text-center">
         <% if user_signed_in? %>
@@ -11,11 +21,7 @@
           <p><%= "#{current_user.account_name}さん！" %></p>
         <% end %>
       </div>
-
-      <button class="navbar-toggler" type="button1" data-toggle="collapse" data-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
