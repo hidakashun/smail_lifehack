@@ -3,53 +3,58 @@
     <div class="col-12 text-start">
       <h3 class="mt-3 mb-5">
         <i class="fa-solid fa-users-gear"></i>
-          ユーザー情報編集
+        ユーザー情報編集
       </h3>
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
         <%= render 'layouts/error', obj: @user %>
-        <table class="table table-hover">
-          <tr>
-            <td class="user_item">
-              アカウント名
-            </td>
-            <td class="user_detail">
-              <%= @user.account_name %>
-            </td>
-          </tr>
-          <tr>
-            <td class="user_item">
-              プロフィール画像
-            </td>
-            <td><%= image_tag @user.get_profile_image(200, 200) %></td>
-          </tr>
-          <tr>
-            <td class="user_item">
-              紹介文
-            </td>
-            <td class="user_detail">
-              <% if @user.introduction.present? %>
-                <%= @user.introduction %>
-              <% else %>
-                紹介文が設定されるとここに表示されます。
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="user_item">
-              会員ステータス
-            </td>
-            <td class="user_detail">
-              <%= f.radio_button :is_active, true %>
-              <%= f.label :is_active_true, "退会" %>
-              <%= f.radio_button :is_active, false %>
-              <%= f.label :is_active_false, "有効" %>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><%= f.submit "変更内容を保存", class: "btn btn-primary" %></td>
-          </tr>
-        </table>
+        <div class="table-responsive"> <!-- レスポンシブ対応のためにtable-responsiveを追加 -->
+          <table class="table table-hover">
+            <tr>
+              <td class="user_item">
+                アカウント名
+              </td>
+              <td class="user_detail">
+                <%= @user.account_name %>
+              </td>
+            </tr>
+            <tr>
+              <td class="user_item">
+                プロフィール画像
+              </td>
+              <td><%= image_tag @user.get_profile_image(200, 200) %></td>
+            </tr>
+            <tr>
+              <td class="user_item">
+                紹介文
+              </td>
+              <td class="user_detail">
+                <% if @user.introduction.present? %>
+                  <%= @user.introduction %>
+                <% else %>
+                  紹介文が設定されるとここに表示されます.
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td class="user_item">
+                会員ステータス
+              </td>
+              <td class="user_detail">
+                <%= f.radio_button :is_active, true %>
+                <%= f.label :is_active_true, "退会" %>
+                <%= f.radio_button :is_active, false %>
+                <%= f.label :is_active_false, "有効" %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center">
+              <%= f.submit "変更内容を保存", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
