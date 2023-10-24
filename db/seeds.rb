@@ -5,7 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+#user1~20のデータ
+20.times do |n|
+  User.create!(
+    account_name: "テストユーザー#{n + 1}",
+    is_active: false,
+    email: "test#{n + 1}@test.com",
+    introduction: "私はテストユーザー#{n + 1}といいます。よろしくお願いします。",
+    password: "000000"
+  )
+end
 
 #user21~23のデータ
 user_data = [
