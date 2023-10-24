@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "seedの実行を開始"
+
 #user1~20のデータ
 20.times do |n|
   User.create!(
@@ -16,6 +18,8 @@
     password: "000000"
   )
 end
+
+puts " user1~20のデータ作成完了"
 
 #user21~23のデータ
 user_data = [
@@ -32,11 +36,14 @@ user_data.each do |data|
   end
 end
 
+puts " user21~23のデータ作成完了"
+
 #adminのデータ
 Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
 
+puts " adminのデータ作成完了"
 
 #ユーザー投稿関連
 User.all.each do |user|
@@ -106,3 +113,7 @@ User.all.each do |user|
   # 画像を複数アップロードする場合、同様のコードを繰り返し使用
   lifehack3.lifehack_images.attach(io: File.open("#{Rails.root}/db/fixtures/air conditioner.jpg"), filename:"air conditioner.jpg")
 end
+
+puts "userの投稿データ問題なく作成されました。"
+
+puts "seedの実行が完了しました"
