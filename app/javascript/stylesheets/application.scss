@@ -144,12 +144,22 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
   text-decoration: none;
 }
 
-.user_list:hover { /* カーソルが上にあるときの背景色 */
+.user_list:hover { /* ユーザー一覧カーソルが上にあるときの背景色 */
   background-color: #F2F5A9;
 }
 
-.lifehack_list:hover { /* カーソルが上にあるときの背景色 */
+.lifehack_list:hover { /* 投稿一覧カーソルが上にあるときの背景色 */
   background-color: #F2F5A9;
+}
+
+.comment_card:hover {/* 投稿のコメントカーソルが上にあるときの背景色 */
+  background-color: #F2F5A9;
+}
+
+.profile_image {/* ユーザー詳細ページ画像中央配置 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .custom-select {/* キーワード検索ドロップダウンメニュー */

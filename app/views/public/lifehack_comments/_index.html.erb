@@ -1,9 +1,9 @@
 <% if lifehack_comments.any? %>
   <div style="max-height: 300px; overflow-y: auto;">
     <% lifehack_comments.each do |lifehack_comment| %>
-      <div class="card mb-3">
+      <div class="comment_card mb-3">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <% if admin_signed_in? %>
               <%= link_to admin_user_path(lifehack_comment.user) do %><!--管理者ユーザー詳細ページ-->
                 <%= image_tag lifehack_comment.user.get_profile_image(120, 120) %><br>
