@@ -20,8 +20,9 @@
 - いいライフハックを見つけ、投稿、共有したい時
 
 ## 設計書
-​
-
+- 画面遷移図
+  https://drive.google.com/file/d/1p136IWhZec_qHGLVliqthhBs0V94v74o/view?usp=sharing
+-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -30,7 +31,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
-折りたたむ
+- フリー画像素材として以下を使用
+  https://unsplash.com/ja

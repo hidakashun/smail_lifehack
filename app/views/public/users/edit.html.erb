@@ -7,7 +7,7 @@
       </h3>
       <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
         <%= render 'layouts/error', obj: @user %>
-        <table class="table table-hover">
+        <table class="table table-hover table-borderless">
           <tr>
             <td class="user_item">
               アカウント名
