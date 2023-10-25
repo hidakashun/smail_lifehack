@@ -86,8 +86,10 @@
             </p>
             <% else %>
             <p>
-              <i class="fas fa-heart" aria-hidden="true"></i>
-              <%= @lifehack.favorites.count %>
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                <%= @lifehack.favorites.count %>
+              <% end %>
             </p>
             <% end %>
           </div>
@@ -114,6 +116,7 @@
         </div>
       </li>
     </ul>
+    <% unless @lifehack.is_draft %><!--下書き時は表示させない-->
     <div class="col-12">
       <% if user_signed_in? %>
         <div><!--create.js.erbでクラスの指定とアクションを記述してるので変更不可!-->
@@ -121,6 +124,7 @@
         </div>
       <% end %>
     </div>
+    <% end %>
     <div class="row justify-content-center py-4">
       <% if @lifehack.user == current_user %>
         <div class="col-6 col-md-3 mb-2">
