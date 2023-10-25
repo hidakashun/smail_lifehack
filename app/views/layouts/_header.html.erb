@@ -6,7 +6,7 @@
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag 'icon.png', size: "150x100" %>
         <% end %>
-        
+
         <!-- ハンバーガーメニュー -->
         <div class="button">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -15,13 +15,13 @@
         </div>
       </div>
 
-      <div class="col-sm-3 text-center">
+      <div class="welcome_user col-sm-3 text-center">
         <% if user_signed_in? %>
           <p>ようこそ、</p>
           <p><%= "#{current_user.account_name}さん！" %></p>
         <% end %>
       </div>
-      
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>

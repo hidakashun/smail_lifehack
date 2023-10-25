@@ -1,13 +1,18 @@
 @use '~bootstrap/scss/bootstrap';
 
-
-
-body {//背景画像
+body {
 //url("../images/background_image.jpg")；の「../」は階層のこと
-  background-image: url("../images/background_image.jpg");
+  background-image: url("../images/background_image.jpg");//背景画像
+  //url("../images/background_image.jpg")；の「../」は階層のこと
   background-position: center;
   background-size: cover;
-  padding-top: 230px; /* ヘッダーと被るため余白を設定 */
+  padding-top: 180px; /* ヘッダーと被るため余白を設定 */
+}
+
+@media (max-width: 576px) {/* スマートフォン用（画面幅が最大576px以下） */
+  body {
+    padding-top: 270px; /* ヘッダーと被るため余白を設定 */
+  }
 }
 
 /*↓ここからヘッダー*/
@@ -25,6 +30,13 @@ body {//背景画像
   right: 0; /* 右端からの距離を0に設定 */
   margin: 20px; /* マージンを追加して位置を微調整（必要に応じて調整） */
   z-index: 200; /* 必要に応じてz-indexを設定して他の要素より上に表示 */
+}
+
+@media (max-width: 576px) {/* スマートフォン用（画面幅が最大576px以下） */
+  .welcome_user {/*「ようこそ、〇〇〇さん！」をレスポンシブ時配置変更 */
+    display: flex;
+    justify-content: center; /* テキストを水平方向に中央に配置 */
+  }
 }
 
 .nav-link {/*ヘッダーグローバルナビ*/
