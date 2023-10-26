@@ -1,4 +1,4 @@
-# smail lifehack
+# small lifehack
 
 ## サイト概要
 ### サイトテーマ
