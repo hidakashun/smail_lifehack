@@ -20,10 +20,9 @@
 - いいライフハックを見つけ、投稿、共有したい時
 
 ## 設計書
-- 画面遷移図
-  https://drive.google.com/file/d/1p136IWhZec_qHGLVliqthhBs0V94v74o/view?usp=sharing
-- テーブル定義書
-  https://docs.google.com/spreadsheets/d/17FkZB6Ccik2YA2baPdJIqTumllm-awThL5ucwqYAT18/edit?usp=sharing
+- [画面遷移図](https://drive.google.com/file/d/1p136IWhZec_qHGLVliqthhBs0V94v74o/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/17FkZB6Ccik2YA2baPdJIqTumllm-awThL5ucwqYAT18/edit?usp=sharing)
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
