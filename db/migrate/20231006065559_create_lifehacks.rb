@@ -5,7 +5,7 @@ class CreateLifehacks < ActiveRecord::Migration[6.1]
       t.string :title, null: false
       t.text :body, null: false
       t.string :star
-      t.string :tag
+      t.string :tag, null: false
       t.boolean :is_draft, default: false
 
       t.timestamps
