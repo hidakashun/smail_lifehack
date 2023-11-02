@@ -21,6 +21,9 @@ class Public::LifehacksController < ApplicationController
 
   def create
     @lifehack = Lifehack.new(lifehack_params)
+
+    @lifehack.score = Language.get_data(lifehack_params[:body])  #自然言語処理
+
     @lifehack.user_id = current_user.id
     # 投稿ボタンを押下した場合
     if params[:post]
@@ -48,6 +51,7 @@ class Public::LifehacksController < ApplicationController
 
   def update
     @lifehack = Lifehack.find(params[:id])
+    @lifehack.score = Language.get_data(lifehack_params[:body])  #自然言語処理
     # 下書きライフハックの更新（公開）の場合
     if params[:publicize_draft]
       # ライフハック公開時にバリデーションを実施

@@ -10,7 +10,7 @@ module SmailLifehack
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.paths.add 'lib', eager_load: true # ライブラリ読み込み
     # 日本語の言語設定
     config.i18n.default_locale = :ja
     #'Tokyo' タイムゾーンを設定
