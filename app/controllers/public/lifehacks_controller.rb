@@ -22,8 +22,6 @@ class Public::LifehacksController < ApplicationController
   def create
     @lifehack = Lifehack.new(lifehack_params)
 
-    @lifehack.score = Language.get_data(lifehack_params[:body])  #自然言語処理
-
     @lifehack.user_id = current_user.id
     # 投稿ボタンを押下した場合
     if params[:post]

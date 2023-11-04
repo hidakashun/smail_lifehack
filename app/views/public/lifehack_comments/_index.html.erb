@@ -19,6 +19,11 @@
           <div class="col-md-8">
             <div class="card-body">
               <p class="card-text"><%= lifehack_comment.comment %></p>
+
+              <% if lifehack_comment.score < -0.7 %><!--自然言語処理-->
+                <p class="card-text-score mt-2"><small>※非常にネガティブなコメントです。トラブル回避のため、不要な場合は削除することを推奨します※</small></p>
+              <% end %>
+
               <p class="card-text"><small class="text-muted"><%= lifehack_comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
                         <% if admin_signed_in? %>
                 <%= link_to "管理者権限によりコメントを削除する", lifehack_lifehack_comment_path(lifehack_comment.lifehack, lifehack_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
