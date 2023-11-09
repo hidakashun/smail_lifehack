@@ -201,12 +201,12 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     transition: 0.3s;/*0.3sで表示*/
 }
 .pagination .active a {/* アクティブなページへのスタイル */
-     background-color: #93c9ff; /* アクティブなページの背景色を変更 */
+    background-color: #93c9ff; /* アクティブなページの背景色を変更 */
     color: #fff; /* テキストの色を変更 */
 }
 .pagination .page.current {/* 現在のページ番号の背景色を変更 */
-     background-color: #93c9ff; /* 好きな背景色に変更 */
-     color: #fff; /* テキストの色を変更（背景に合わせたり） */
+    background-color: #93c9ff; /* 好きな背景色に変更 */
+    color: #fff; /* テキストの色を変更（背景に合わせる） */
     border-radius: 15px; /* 角を丸くする */
     padding: 2px 5px;
 }
@@ -215,9 +215,22 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 
 .footer {
     background-color: #F5F6CE;
-    text-align: center; /* テキストを中央に配置 */
 }
 
+.footer_text_area a {
+    color: #495057;/* 文字色 */
+    padding: 10px;
+    border-radius: 15px; /* 角を丸くする */
+}
+
+.footer_text_area a:hover {
+    color: #fff;/* 文字色 */
+    padding: 10px;
+    background-color: #F4FA58;
+    border-radius: 15px; /* 角を丸くする */
+    transition: 0.3s;/*0.3sで表示*/
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.2);/*影を表現*/
+}
 
 @media (max-width: 576px) {/* スマートフォン用（画面幅が最大576px以下） */
     body {
