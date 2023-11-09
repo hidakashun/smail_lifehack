@@ -117,6 +117,7 @@ body {/*body全体に適用*/
     background-color: #93c9ff; /* マウスオーバー時の背景色 */
     color: #fff; /* テキストの色を変更 */
     border-radius: 15px; /* 角を丸くする */
+    transition: 0.3s;/*0.3sで表示*/
 }
 
 
@@ -197,6 +198,7 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 }
 .pagination a:hover {/* ページネーションリンクのホバー時のスタイル */
     background: #93c9ff; /* ホバー時の背景色を変更 */
+    transition: 0.3s;/*0.3sで表示*/
 }
 .pagination .active a {/* アクティブなページへのスタイル */
      background-color: #93c9ff; /* アクティブなページの背景色を変更 */
