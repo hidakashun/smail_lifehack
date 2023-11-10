@@ -4,10 +4,12 @@
     投稿詳細
   </h3>
   <div class="card">
-    <div class="lifehack_images justify-content-center mt-5">
+    <div class="lifehack_images justify-content-center mt-2">
       <% if @lifehack.lifehack_images.attached? %><!--画像追加がされたとき-->
         <% @lifehack.lifehack_images.each do |image| %>
-          <%= image_tag image.variant(resize: "330x330") %>
+          <a href="<%= rails_blob_path(image, only_path: true) %>" data-lightbox="group" data-title="投稿画像"><!--lightbox2(投稿画像拡大表示)-->
+            <%= image_tag image.variant(resize: "330x330") %>
+          </a>
         <% end %>
       <% else %><!--画像追加がされなかったとき-->
         <%= image_tag 'no_lifehack_image.jpg' %>

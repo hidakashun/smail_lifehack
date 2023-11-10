@@ -8,7 +8,6 @@ body {/*body全体に適用*/
     padding-top: 180px; /* ヘッダーと被るため余白を設定 */
 }
 
-
 /*↓ここからヘッダー*/
 .header {
     background-color: #F5F6CE;
@@ -129,16 +128,43 @@ body {/*body全体に適用*/
 }
 
 
-/* ↓ここから投稿画像のレスポンシブ */
+/* ↓ここから投稿画像の位置調整 */
 .lifehack_images {
     display: flex;
+    justify-content: center; /* 水平方向の中央配置 */
+    align-items: center; /* 垂直方向の中央配置 */
+    height: 300px; /* 画面の高さいっぱいに広げる */
 }
 .lifehack_images img {
     max-width: 100%;
     width: 300px;
     height: auto;
 }
-/* ↑ここまで投稿画像のレスポンシブ */
+/* ↑ここまで投稿画像の位置調整 */
+
+
+/* ↓ここからlightbox追記修正*/
+.lightboxOverlay{/*拡大時のモーダル*/
+    width:100% !important;
+}
+.lb-outerContainer,.lb-dataContainer{
+    width:calc(100% - 20px) !important;
+    max-width:700px;/*拡大時の最大幅*/
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+}
+.lb-outerContainer{
+    height:auto !important;
+    margin-left:auto;
+    margin-right:auto;
+}
+.lb-image{
+    width:100% !important;
+    height:auto !important;
+}
+/* ↑ここまでlightbox追記修正*/
 
 
 .card-text-score {/* 自然言語処理、不適切なコメントが投稿されたときの警告文 */
@@ -243,13 +269,16 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     .main-visual-content {
         font-size: 18px;
     }
+    .lifehack_images {
+        height: 100px; /* 画面の高さいっぱいに広げる */
+    }
     .lifehack_images img {
         max-width: 100%;
         width: 100px;
         height: auto;
     }
     .footer {
-    font-size: 14px;
+        font-size: 14px;
     }
 }
 
@@ -257,6 +286,9 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 @media (min-width: 576px) and (max-width: 768px) {/* タブレット用（画面幅が576px以上～768px以下） */
     .main-visual-content {
         font-size: 24px;
+    }
+    .lifehack_images {
+        height: 200px; /* 画面の高さいっぱいに広げる */
     }
     .lifehack_images img {
         max-width: 100%;
