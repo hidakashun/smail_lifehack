@@ -35,7 +35,7 @@ body {/*body全体に適用*/
     border-radius: 15px; /* 角を丸くする */
 }
 .navbar-light .navbar-nav .nav-link {
-    color: #495057;/* 文字色 */
+    color: dimgrey;/* 文字色 */
 }
 .nav-item:hover { /* カーソルが上にあるときの背景色 */
     background-color: #F4FA58;
@@ -44,7 +44,7 @@ body {/*body全体に適用*/
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.2);/*影を表現*/
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #fff;/* カーソルが上にあるときの文字色 */
+    color: #3c3b3b;/* カーソルが上にあるときの文字色 */
     transition: 0.3s;/*0.3sで表示*/
 }
 .guest_btn { /* ゲストログインボタン */
@@ -224,7 +224,7 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 }
 
 .footer_text_area a:hover {
-    color: #fff;/* 文字色 */
+    color: dimgrey;/* 文字色 */
     padding: 10px;
     background-color: #F4FA58;
     border-radius: 15px; /* 角を丸くする */
