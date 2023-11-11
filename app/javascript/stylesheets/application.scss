@@ -37,10 +37,11 @@ body {/*body全体に適用*/
     color: dimgrey;/* 文字色 */
 }
 .nav-item:hover { /* カーソルが上にあるときの背景色 */
-    background-color: #F4FA58;
+    background: -webkit-linear-gradient(to right, #F4FA58, transparent);
+    background: linear-gradient(to right, #F4FA58, transparent);
     border-radius: 15px; /* 角を丸くする */
     transition: 0.3s;/*0.3sで表示*/
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.2);/*影を表現*/
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);/*影を表現*/
 }
 .navbar-light .navbar-nav .nav-link:hover {
     color: #3c3b3b;/* カーソルが上にあるときの文字色 */
@@ -252,10 +253,11 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 .footer_text_area a:hover {
     color: dimgrey;/* 文字色 */
     padding: 10px;
-    background-color: #F4FA58;
+    background: -webkit-linear-gradient(to right, #F4FA58, transparent);
+    background: linear-gradient(to right, #F4FA58, transparent);
     border-radius: 15px; /* 角を丸くする */
     transition: 0.3s;/*0.3sで表示*/
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.2);/*影を表現*/
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);/*影を表現*/
 }
 
 @media (max-width: 576px) {/* スマートフォン用（画面幅が最大576px以下） */
@@ -265,6 +267,9 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     .welcome_user {/*「ようこそ、〇〇〇さん！」をレスポンシブ時配置変更 */
         display: flex;
         justify-content: center; /* テキストを水平方向に中央に配置 */
+    }
+    .button button:hover {/* ハンバーガーメニューホバー時の背景色変更 */
+        background-color: #F4FA58;
     }
     .main-visual-content {
         font-size: 18px;
