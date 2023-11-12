@@ -37,10 +37,11 @@ body {/*body全体に適用*/
     color: dimgrey;/* 文字色 */
 }
 .nav-item:hover { /* カーソルが上にあるときの背景色 */
+    border-top: 1px solid rgba(255, 255, 255, 0.5);/*外枠の範囲指定*//*左上から光が当たっている様な表現*/
+    border-left: 1px solid rgba(255, 255, 255, 0.5);/*外枠の範囲指定*//*左上から光が当たっている様な表現*/
     background: -webkit-linear-gradient(to right, #F4FA58, transparent);
     background: linear-gradient(to right, #F4FA58, transparent);
     border-radius: 15px; /* 角を丸くする */
-    transition: 0.3s;/*0.3sで表示*/
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);/*影を表現*/
 }
 .navbar-light .navbar-nav .nav-link:hover {
@@ -72,6 +73,7 @@ body {/*body全体に適用*/
 .image-size {/* トップ画像のサイズを変更 */
     width: 100%; /* 幅を100%に設定 */
     height: 400px; /* 高さを400pxに設定 */
+    object-fit: cover; /* 画像がコンテナにフィットするように設定 */
 }
 /*↑ここまでトップページ画像サイズとポジション*/
 
@@ -178,6 +180,24 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 }
 
 
+/* ↓ここから投稿タイトルの下線*/
+.lifehack-title {
+  position: relative;
+  padding-bottom: 3px; /* 下線とテキストの余白を調整 */
+  border: none; /* 下線を消去する */
+}
+.lifehack-title:before {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background: linear-gradient(to right, gold, darkorange); /* グラデーションを追加 */
+}
+/* ↑ここまで投稿タイトルの下線*/
+
+
 .user_list:hover { /* ユーザー一覧カーソルが上にあるときの背景色 */
     background-color: #F2F5A9;
 }
@@ -251,12 +271,13 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
 }
 
 .footer_text_area a:hover {
-    color: dimgrey;/* 文字色 */
+    color: #3c3b3b;/* カーソルが上にあるときの文字色 */
     padding: 10px;
     background: -webkit-linear-gradient(to right, #F4FA58, transparent);
     background: linear-gradient(to right, #F4FA58, transparent);
     border-radius: 15px; /* 角を丸くする */
-    transition: 0.3s;/*0.3sで表示*/
+    border-top: 1px solid rgba(255, 255, 255, 0.5);/*外枠の範囲指定*//*左上から光が当たっている様な表現*/
+    border-left: 1px solid rgba(255, 255, 255, 0.5);/*外枠の範囲指定*//*左上から光が当たっている様な表現*/
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);/*影を表現*/
 }
 

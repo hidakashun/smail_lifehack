@@ -4,8 +4,8 @@
       <div class="d-flex w-100 justify-content-between">
         <h4 class="mb-1">
           <%= image_tag 'miniature light bulb.png', size: "50x50" %>
-          <%= link_to lifehack.title, lifehack, class: "text-reset" %>
-        </h4><!--タイトル-->
+          <%= link_to lifehack.title, lifehack, class: "text-reset lifehack-title" %><!--タイトル-->
+        </h4>
         <small>
             投稿日<%= lifehack.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
             （更新日<%= lifehack.updated_at.strftime('%Y/%m/%d') %>）<!--更新日-->
