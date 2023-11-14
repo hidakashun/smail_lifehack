@@ -38,10 +38,20 @@
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>
-    
-    <!-- おすすめ度(star)の星評価を表示するJavaScriptコード -->
-    <%= javascript_pack_tag 'star_rate' %>
-    
+    <script>
+      $(document).ready(function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = "";
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'lifehack[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
   <% else %>
     <div class="form-group">
       <h4 class="mt-5">おすすめ度</h4>
