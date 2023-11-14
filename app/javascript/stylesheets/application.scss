@@ -106,7 +106,7 @@ body {/*body全体に適用*/
     width: 60%; /* 横幅60% */
     height: 400px; /* 親の高さに揃える */
     padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
-    background-color:rgba(255,255,255,0.7); /*白背景透過 */
+    background-color: rgba(255,255,255,0.7); /*白背景透過 */
 }
 .main-visual-text {
     color: #495057; /* 文字色をグレーに変更 */
@@ -139,33 +139,33 @@ body {/*body全体に適用*/
     height: 300px; /* 画面の高さいっぱいに広げる */
 }
 .lifehack_images img {
-    max-width: 100%;
-    width: 300px;
-    height: auto;
+    max-width: 300px;
+    max-height: 300px;
 }
 /* ↑ここまで投稿画像の位置調整 */
 
 
 /* ↓ここからlightbox追記修正*/
 .lightboxOverlay{/*拡大時のモーダル*/
-    width:100% !important;
+    width: 100% !important;
 }
 .lb-outerContainer,.lb-dataContainer{
-    width:calc(100% - 20px) !important;
-    max-width:700px;/*拡大時の最大幅*/
+    width: calc(100% - 20px) !important;
+    max-width: 400px;/*拡大時の最大幅*/
+    max-height: auto;
     position: fixed;
     left: 50%;
     top: 10%;
     transform: translate(-50%);
 }
 .lb-outerContainer{
-    height:auto !important;
-    margin-left:auto;
-    margin-right:auto;
+    height: auto !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 .lb-image{
-    width:100% !important;
-    height:auto !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 /* ↑ここまでlightbox追記修正*/
 
@@ -264,11 +264,13 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     background-color: #F5F6CE;
 }
 
+
 .footer_text_area a {
     color: #495057;/* 文字色 */
     padding: 10px;
     border-radius: 15px; /* 角を丸くする */
 }
+
 
 .footer_text_area a:hover {
     color: #3c3b3b;/* カーソルが上にあるときの文字色 */
@@ -280,6 +282,7 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     border-left: 1px solid rgba(255, 255, 255, 0.5);/*外枠の範囲指定*//*左上から光が当たっている様な表現*/
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);/*影を表現*/
 }
+
 
 @media (max-width: 576px) {/* スマートフォン用（画面幅が最大576px以下） */
     body {
@@ -296,12 +299,11 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
         font-size: 18px;
     }
     .lifehack_images {
-        height: 100px; /* 画面の高さいっぱいに広げる */
+        height: 100px;
     }
     .lifehack_images img {
-        max-width: 100%;
-        width: 100px;
-        height: auto;
+        max-width: 100px;
+        max-height: 100px;
     }
     .footer {
         font-size: 14px;
@@ -314,11 +316,10 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
         font-size: 24px;
     }
     .lifehack_images {
-        height: 200px; /* 画面の高さいっぱいに広げる */
+        height: 200px;
     }
     .lifehack_images img {
-        max-width: 100%;
-        width: 200px;
-        height: auto;
+        max-width: 200px;
+        max-height: 200px;
     }
 }
