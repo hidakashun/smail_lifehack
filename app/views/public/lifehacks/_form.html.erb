@@ -29,17 +29,7 @@
   <% end %>
 
   <!-- 画像枚数制限をかけるJavaScriptコード-->
-  <script>
-    document.getElementById('image-upload').addEventListener('change', function(e) {
-      const files = e.target.files;
-      if (files.length > 3) { // 画像の枚数が三枚より多いとき
-        document.getElementById('error-message').style.display = 'block';
-        e.preventDefault(); // 画像の選択をキャンセル
-      } else {//そうではないとき
-        document.getElementById('error-message').style.display = 'none';
-      }
-    });
-  </script>
+  <%= javascript_pack_tag 'image-upload' %>
 
   <!-- おすすめ度(star)についての記述 -->
   <% if lifehack.id.nil? %>
@@ -48,20 +38,10 @@
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>
-    <script>
-      $(document).ready(function() {
-        let elem = document.querySelector('#post_raty');
-        if (elem == null) return;
-
-        elem.innerHTML = "";
-        let opt = {
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          scoreName: 'lifehack[star]',
-        };
-        raty(elem, opt);
-      });
-    </script>
+    
+    <!-- おすすめ度(star)の星評価を表示するJavaScriptコード -->
+    <%= javascript_pack_tag 'star_rate' %>
+    
   <% else %>
     <div class="form-group">
       <h4 class="mt-5">おすすめ度</h4>
