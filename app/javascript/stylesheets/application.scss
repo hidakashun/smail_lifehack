@@ -292,6 +292,9 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
         display: flex;
         justify-content: center; /* テキストを水平方向に中央に配置 */
     }
+    .nav-link {/*ヘッダーグローバルナビ*/
+        white-space: nowrap;
+    }
     .button button:hover {/* ハンバーガーメニューホバー時の背景色変更 */
         background-color: #F4FA58;
     }
