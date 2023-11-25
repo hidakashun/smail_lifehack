@@ -298,6 +298,14 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     body {
         padding-top: 270px; /* ヘッダーと被るため余白を設定 */
     }
+    .nav-item {
+        justify-content: center;
+        align-items: center;
+    }
+    .navbar {
+        justify-content: center;
+        align-items: center;
+    }
     .welcome_user {/*「ようこそ、〇〇〇さん！」をレスポンシブ時配置変更 */
         display: flex;
         justify-content: center; /* テキストを水平方向に中央に配置 */
@@ -307,6 +315,7 @@ a:hover { /* リンクにカーソルが乗った時下線を表示させない 
     }
     .button button:hover {/* ハンバーガーメニューホバー時の背景色変更 */
         background-color: #F4FA58;
+        cursor: pointer;/*ポインターにする*/
     }
     .main-visual-content {
         font-size: 18px;
