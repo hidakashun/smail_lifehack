@@ -1,13 +1,13 @@
 class Public::UsersController < ApplicationController
-    before_action :authenticate_user!, only: [:favorites, :index_user]
-
-  def show
-    @user = User.find(params[:id])
-  end
+  before_action :authenticate_user!, only: [:favorites, :index_user]
 
   def index
     @users = User.page(params[:page]).per(10)
                  .order(created_at: :desc)
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -15,12 +15,12 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    if current_user.email == 'guest@example.com'# メールアドレスで機能を分けてる
-      redirect_to root_path, notice: "ゲストユーザーの登録情報は変更できません。"
+    if current_user.email == 'guest@example.com' # メールアドレスで機能を分けてる
+      redirect_to root_path, notice: 'ゲストユーザーの登録情報は変更できません。'
     else
       @user = current_user
       if @user.update(user_params)
-        flash[:notice] = "ユーザー情報を更新しました。"
+        flash[:notice] = 'ユーザー情報を更新しました。'
         redirect_to user_path
       else
         render :edit
@@ -33,14 +33,14 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    if current_user.email == 'guest@example.com'# メールアドレスで機能を分けてる
-      redirect_to root_path, notice: "ゲストユーザーは退会できません。"
+    if current_user.email == 'guest@example.com' # メールアドレスで機能を分けてる
+      redirect_to root_path, notice: 'ゲストユーザーは退会できません。'
     else
       @user = current_user
       # is_activeカラムをtrueに変更することにより削除フラグを立てる
       @user.update(is_active: true)
       reset_session
-      redirect_to root_path, notice: "退会処理を実行いたしました"
+      redirect_to root_path, notice: '退会処理を実行いたしました'
     end
   end
 

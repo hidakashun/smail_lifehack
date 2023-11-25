@@ -38,8 +38,8 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # rubocop追加
@@ -63,9 +63,9 @@ gem 'devise'
 
 gem 'jquery-rails'
 
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 
-gem "enum_help"
+gem 'enum_help'
 
 gem 'rails-i18n'
 
@@ -74,6 +74,6 @@ group :production do
   gem 'mysql2'
 end
 
-gem "net-smtp"
-gem "net-pop"
-gem "net-imap"
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'

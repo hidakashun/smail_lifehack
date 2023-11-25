@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   def index
-   @users = User.page(params[:page]).per(10)
-                .order(created_at: :desc)
+    @users = User.page(params[:page]).per(10)
+                 .order(created_at: :desc)
   end
 
   def show
@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "会員情報を更新しました"
+      flash[:notice] = '会員情報を更新しました'
       redirect_to admin_user_path(@user)
     else
       render :edit
@@ -46,5 +46,4 @@ class Admin::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:is_active)
   end
-
 end

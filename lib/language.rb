@@ -1,4 +1,4 @@
-#Google Cloud Natural Language APIを呼ぶためのライブラリを作成
+# Google Cloud Natural Language APIを呼ぶためのライブラリを作成
 require 'base64'
 require 'json'
 require 'net/https'
@@ -7,7 +7,7 @@ module Language
   class << self
     def get_data(text)
       # APIのURL作成
-      api_url = "https://language.googleapis.com/v1/documents:analyzeSentiment?key=#{ENV['GOOGLE_API_KEY']}"
+      api_url = "https://language.googleapis.com/v1/documents:analyzeSentiment?key=#{ENV.fetch('GOOGLE_API_KEY', nil)}"
       # APIリクエスト用のJSONパラメータ
       params = {
         document: {
@@ -24,11 +24,9 @@ module Language
       response = https.request(request, params)
       # APIレスポンス出力
       response_body = JSON.parse(response.body)
-      if (error = response_body['error']).present?
-        raise error['message']
-      else
-        response_body['documentSentiment']['score']
-      end
+      raise error['message'] if (error = response_body['error']).present?
+
+      response_body['documentSentiment']['score']
     end
   end
 end

@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :lifehack_comments, dependent: :destroy
 
-  validates :account_name, presence: true, length: { minimum: 2, maximum: 20 }#アカウント名最小2文字、最大20文字
-  validates :introduction, length: { maximum: 50 }#紹介文最大50文字
+  validates :account_name, presence: true, length: { minimum: 2, maximum: 20 } # アカウント名最小2文字、最大20文字
+  validates :introduction, length: { maximum: 50 } # 紹介文最大50文字
 
   has_one_attached :profile_image
 
