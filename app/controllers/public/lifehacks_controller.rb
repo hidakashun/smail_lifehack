@@ -1,5 +1,6 @@
 class Public::LifehacksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_author_access, only: [:index_draft]
   def index
     @lifehacks = Lifehack.page(params[:page]).per(10)
                          .order(created_at: :desc)
@@ -91,9 +92,17 @@ class Public::LifehacksController < ApplicationController
 
   def ensure_correct_user
     @lifehack = Lifehack.find(params[:id])
-    unless @lifehack.user == current_user
-      redirect_to lifehacks_path
-    end
+    return if @lifehack.user == current_user
+
+    redirect_to lifehacks_path
   end
 
+  def ensure_author_access
+    redirect_to lifehacks_path unless current_user || admin_signed_in?
+
+    return unless admin_signed_in?
+
+    # admin がアクセスした場合は別のページにリダイレクト
+    redirect_to admin_root_path
+  end
 end

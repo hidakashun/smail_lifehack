@@ -26,8 +26,8 @@ class Public::LifehackCommentsController < ApplicationController
 
   def ensure_correct_user
     @comment = LifehackComment.find(params[:id])
-    unless @comment.user == current_user || admin_signed_in?
-      redirect_to lifehacks_path
-    end
+    return if @comment.user == current_user || admin_signed_in?
+
+    redirect_to lifehacks_path
   end
 end
