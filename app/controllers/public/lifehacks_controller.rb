@@ -1,4 +1,5 @@
 class Public::LifehacksController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @lifehacks = Lifehack.page(params[:page]).per(10)
                          .order(created_at: :desc)
@@ -87,4 +88,12 @@ class Public::LifehacksController < ApplicationController
   def lifehack_params
     params.require(:lifehack).permit(:title, :body, :star, :tag, lifehack_images: [])
   end
+
+  def ensure_correct_user
+    @lifehack = Lifehack.find(params[:id])
+    unless @lifehack.user == current_user
+      redirect_to lifehacks_path
+    end
+  end
+
 end
