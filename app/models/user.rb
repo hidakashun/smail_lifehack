@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def active_for_authentication?
-    super && !deleted_at
+    super && !is_active
   end
 
   has_many :lifehacks, dependent: :destroy
