@@ -29,14 +29,53 @@ class Public::LifehacksController < ApplicationController
   end
 
   def create
-    @lifehack = Lifehack.new
+    @lifehack = Lifehack.new(lifehack_params)
     @lifehack.user_id = current_user.id
-    handle_lifehack_save
+    # 投稿ボタンを押下した場合
+    if params[:post]
+      if @lifehack.save(context: :publicize)
+        redirect_to lifehack_path(@lifehack), notice: 'ライフハックを投稿しました！'
+      else
+        render :new, alert: '投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください'
+      end
+    # 下書きボタンを押下した場合
+    else
+      @lifehack.is_draft = true
+      if @lifehack.save(context: :publicize)
+        redirect_to lifehack_path(@lifehack), notice: 'ライフハックを下書き保存しました！'
+      else
+        render :new, alert: '登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください'
+      end
+    end
   end
 
   def update
     @lifehack = Lifehack.find(params[:id])
-    handle_lifehack_save
+    # 下書きライフハックの更新（公開）の場合
+    if params[:publicize_draft]
+      # ライフハック公開時にバリデーションを実施
+      # updateメソッドにはcontextが使用できないため、公開処理にはattributesとsaveメソッドを使用する
+      @lifehack.attributes = lifehack_params.merge(is_draft: false)
+      if @lifehack.save(context: :publicize)
+        redirect_to lifehack_path(@lifehack), notice: '下書きのライフハックを公開しました！'
+      else
+        @lifehack.is_draft = true
+        render :edit, alert: 'ライフハックを公開できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください'
+      end
+    # 公開済みライフハックの更新の場合
+    elsif params[:update_post]
+      @lifehack.attributes = lifehack_params
+      if @lifehack.save(context: :publicize)
+        redirect_to lifehack_path(@lifehack), notice: '投稿内容を更新しました。'
+      else
+        render :edit, alert: '更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください'
+      end
+    # 下書きライフハックの更新（非公開）の場合
+    elsif @lifehack.update(lifehack_params)
+      redirect_to lifehack_path(@lifehack), notice: '下書きのライフハックを更新しました！'
+    else
+      render :edit, alert: '更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください'
+    end
   end
 
   def destroy
@@ -71,25 +110,5 @@ class Public::LifehacksController < ApplicationController
 
     # admin がアクセスした場合は別のページにリダイレクト
     redirect_to admin_root_path
-  end
-
-  def handle_lifehack_save
-    if params[:post]
-      handle_save_and_redirect('ライフハックを投稿しました！', '投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください')
-    elsif params[:publicize_draft]
-      handle_save_and_redirect('下書きのライフハックを公開しました！', 'ライフハックを公開できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください', true)
-    elsif params[:update_post]
-      handle_save_and_redirect('投稿内容を更新しました。', '更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください')
-    else
-      handle_save_and_redirect('下書きのライフハックを更新しました！', '更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください', true)
-    end
-  end
-
-  def handle_save_and_redirect(success_message, failure_message, is_draft = false)
-    if @lifehack.save_lifehack(lifehack_params, is_draft)
-      redirect_to lifehack_path(@lifehack), notice: success_message
-    else
-      render :new, alert: failure_message
-    end
   end
 end
