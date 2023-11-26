@@ -10,7 +10,14 @@ class Public::LifehacksController < ApplicationController
   def show
     @lifehack = Lifehack.find(params[:id])
     @lifehack_comment = LifehackComment.new
-    @lifehack_comments = @lifehack.lifehack_comments.order(created_at: :desc) # ライフハックに紐づいたライフハックのコメントの情報を取得
+    @lifehack_comments = @lifehack.lifehack_comments.order(created_at: :desc)
+
+    # 下書きを作成したユーザーでない場合はリダイレクト
+    if @lifehack.is_draft && @lifehack.user == current_user
+      return
+    elsif @lifehack.is_draft
+      redirect_to lifehacks_path
+    end
   end
 
   def new
@@ -93,16 +100,14 @@ class Public::LifehacksController < ApplicationController
   def ensure_correct_user
     @lifehack = Lifehack.find(params[:id])
     return if @lifehack.user == current_user
-
     redirect_to lifehacks_path
   end
 
   def ensure_author_access
     redirect_to lifehacks_path unless current_user || admin_signed_in?
-
     return unless admin_signed_in?
-
     # admin がアクセスした場合は別のページにリダイレクト
     redirect_to admin_root_path
   end
+
 end
