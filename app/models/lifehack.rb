@@ -19,6 +19,12 @@ class Lifehack < ApplicationRecord
     validates :tag
   end
 
+  def save_lifehack(params, is_draft = false)
+    self.attributes = params.merge(is_draft: is_draft)
+    context = is_draft ? :publicize : nil  # 下書きの場合のみコンテキストを設定
+    save(context: context)
+  end
+
   validates :is_draft, inclusion: { in: [true, false] } # 下書き有無
 
   validates :title, presence: true, length: { minimum: 2, maximum: 20 } # タイトル最小2文字、最大20文字
