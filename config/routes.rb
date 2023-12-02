@@ -43,6 +43,10 @@ Rails.application.routes.draw do
         get :index_user
       end
     end
+    #通知機能
+    resources :notifications, only: [:index] do
+      post :update_checked, on: :collection
+    end
     #キーワード検索機能
     get '/search', to: 'searches#search'
     #タグ検索機能

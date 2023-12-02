@@ -38,6 +38,48 @@ class Lifehack < ApplicationRecord
     end
   end
 
+  # 通知機能
+  has_many :notifications, dependent: :destroy
+  # lifehackへのいいね通知機能
+  def create_notification_favorite_lifehack!(current_user)
+    # 同じユーザーが同じ投稿に既にいいねしていないかを確認
+    existing_notification = Notification.find_by(lifehack_id: id, visitor_id: current_user.id, action: 'favorite_lifehack')
+
+    # すでにいいねされていない場合のみ通知レコードを作成
+    return unless existing_notification.nil? && current_user != user
+
+    notification = Notification.new(
+      lifehack_id: id,
+      visitor_id: current_user.id,
+      visited_id: user.id,
+      action: 'favorite_lifehack'
+    )
+
+    return unless notification.valid?
+
+    notification.save
+  end
+
+  unless method_defined?(:create_notification_comment!)
+    def create_notification_comment!(current_user, comment_id)
+      existing_notification = Notification.find_by(lifehack_id: id, visitor_id: current_user.id, action: 'comment')
+
+      return unless existing_notification.nil? && current_user != user
+
+      notification = Notification.new(
+        lifehack_id: id,
+        visitor_id: current_user.id,
+        visited_id: user.id,
+        action: 'comment'
+      )
+
+      # カラムが存在する場合のみセットする
+      notification.comment_id = comment_id if Notification.column_names.include?('comment_id')
+
+      notification.save if notification.valid?
+    end
+  end
+
   has_many_attached :lifehack_images # 画像投稿関連
 
   FILE_NUMBER_LIMIT = 3

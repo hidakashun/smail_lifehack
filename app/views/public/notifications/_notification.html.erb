@@ -1,0 +1,43 @@
+<% notifications.each do |notification| %>
+  <% visitor = notification.visitor %>
+  <% visited = notification.visited %>
+  <div class="notification-box d-flex align-items-center">
+    <div class="notification-image">
+      <%= link_to user_path(visitor), data: { turbolinks: false } do %>
+        <%= image_tag visitor.get_profile_image(70, 70) %><br>
+      <% end %>
+    </div>
+
+    <!-- 通知の種類に応じて表示内容を切り替え -->
+    <% case notification.action %>
+      <% when 'favorite_lifehack' %>
+        <!-- 投稿がいいねされた通知の場合 -->
+        <%= link_to lifehack_path(notification.lifehack) do %>
+          <strong><%= visitor.account_name %></strong>さんが<strong><%= truncate(notification.lifehack.title, length: 10) %></strong>の投稿にいいねしました
+        <% end %>
+      <% when 'comment' %>
+        <!-- コメントが投稿された通知の場合 -->
+        <% if notification.lifehack.user_id == visited.id %>
+          <!-- 自分自身の投稿へのコメントの場合 -->
+          <%= link_to lifehack_path(notification.lifehack) do %>
+            <strong><%= visitor.account_name %></strong>さんが<strong><%= truncate(notification.lifehack.title, length: 10) %></strong>の投稿にコメントしました
+          <% end %>
+        <% else %>
+          <!-- 投稿者が異なり自身がコメントした投稿に他のユーザーがコメントした場合 -->
+          <span>
+            <%= link_to lifehack_path(notification.lifehack) do %>
+              <strong><%= visitor.account_name %></strong>さんが<strong><%= notification.lifehack.user.name + 'さんの投稿' %></strong>にコメントしました
+              <% comment = LifehackComment.find_by(id: notification.lifehack_comment_id) %>
+              <div class="notification-comment">
+                <%= truncate(comment&.lifehack_comment, length: 30) %>
+              </div>
+            <% end %>
+          </span>
+        <% end %>
+    <% end %>
+    </div>
+    <div class="small text-muted text-right" >
+      <%= time_ago_in_words(notification.created_at).upcase %>前
+    </div>
+  </div>
+<% end %>
